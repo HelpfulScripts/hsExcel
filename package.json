@@ -6,7 +6,7 @@
   "keywords": [
     "excel",
     "es6",
-    "javascript",
+    "javascript"
   ],
   "description": "Helpful Scripts Excel file access",
   "homepage": "https://helpfulscripts.github.io/hsExcel/indexGH.html#!/api/hsExcel/0",
@@ -39,7 +39,8 @@
     "typedoc": "^0.11.1",
     "typescript": "^2.9.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.14.0"
+    "webpack": "^4.14.0",
+    "hsutil": "^2.2.4"
   },
   "dependencies": {
       "xlsx": "0.13.2"
