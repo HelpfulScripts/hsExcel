@@ -1,6 +1,6 @@
 {
   "name": "hsexcel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",
   "keywords": [
@@ -43,7 +43,7 @@
     "hsutil": "^2.2.4"
   },
   "dependencies": {
-      "xlsx": "0.13.2",
-      "hsdatab": "^2.2.1"
+    "xlsx": "0.13.2",
+    "hsdatab": "^2.2.1"
   }
 }
