@@ -43,6 +43,7 @@
     "hsutil": "^2.2.4"
   },
   "dependencies": {
-      "xlsx": "0.13.2"
+      "xlsx": "0.13.2",
+      "hsdatab": "^2.2.1"
   }
 }
