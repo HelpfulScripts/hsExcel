@@ -1,6 +1,6 @@
 {
     "collectCoverage": true,
-    "coverageDirectory": "./_dist/coverage/",
+    "coverageDirectory": "docs/coverage/",
     "coverageReporters": ["json", "lcov", "text", "html"],
     "rootDir": "./",
     "roots":["./src"],
@@ -16,5 +16,6 @@
         "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testURL": "http://localhost/",
-    "verbose": false
+    "verbose": true,
+    "bail": false
 }

@@ -39,7 +39,7 @@ module.exports = (grunt, dir, dependencies, type) => {
     //------ Add Test Tasks
     grunt.registerTask('ospec', () => { require('child_process').spawnSync('./node_modules/.bin/ospec', {stdio: 'inherit'}); });
     grunt.registerTask('jest',  () => { require('child_process').spawnSync('./node_modules/.bin/jest',  ['-c=jest.config.json'], {stdio: 'inherit'}); });
-    grunt.registerTask('test', ['clean:test', 'copy:test', 'build-spec', 'ospec', 'jest']); 
+    grunt.registerTask('test', ['clean:test', /*'copy:test', 'build-spec', 'ospec',*/ 'jest']); 
     
     //------ Add Build Tasks
     grunt.registerTask('build-html',    ['copy:buildHTML']);
@@ -52,7 +52,7 @@ module.exports = (grunt, dir, dependencies, type) => {
     registerBuildTasks(type);
    
     //------ Add other MultiTasks
-    grunt.registerTask('make',      ['build', 'test', 'doc', 'stage']);
+    grunt.registerTask('make',      ['build', 'doc', 'test', 'stage']);
     grunt.registerTask('makeShort', ['build', 'stage']);
     grunt.registerTask('once',      ['make']);	
     grunt.registerTask('default',   ['watch']);	
@@ -110,12 +110,14 @@ module.exports = (grunt, dir, dependencies, type) => {
             lib2NPM: { files: [
                 { expand:true, cwd: '_dist/bin',        // copy everything from _dist/bin
                     src:['**/*'], dest:`node_modules/${libPath}/` },
-                { expand:true, cwd: 'docs/data/src',         // copy source htmls to hsDocs
-                    src:['**/*'], dest:`${devPath}/hsApps/hsDocs/docs/data/src` }
+                { expand:true, cwd: 'docs/data',         // copy source htmls to hsDocs
+                    src:['**/*', '!index.json'], dest:`${devPath}/hsApps/hsDocs/docs/data` }
             ]},
             app2NPM: { files: [ 
                 { expand:true, cwd: '_dist/bin',        // copy everything from _dist/bin
                     src:['**/*'], dest:`node_modules/${libPath}/` },
+                { expand:true, cwd: '_dist/bin',        // copy everything from _dist/bin
+                    src:['**/*', '!package.json'], dest:`docs` },
                 { expand:true, cwd: devPath,            // index.html and indexGH.html
                     src:['index.html', 'indexGH.html'], dest:`node_modules/${libPath}/` }
             ]},
@@ -248,7 +250,7 @@ module.exports = (grunt, dir, dependencies, type) => {
             main: {  // translate all *.ts files in src *.htmlfilesin doc
                 expand: true, 
                 cwd: 'src/', 
-                src: ['**/*.ts'], 
+                src: ['**/*.ts', '!**/*.jest.ts', '!**/*.test.ts', '!**/*.spec.ts'], 
                 dest: `docs/data/src/${lib}/`,
                 rename: (dest, src) => dest + src.slice(src.lastIndexOf('/')+1).replace('.ts','.html')
             }
