@@ -13,7 +13,7 @@ describe('excel', () => {
 		let file:any;
 		
 		beforeEach(() => {
-			file = excel.readFile(__dirname+'/'+NAME);
+			file = new excel.File(__dirname+'/'+NAME);
 		});
 		
 		it('should have read '+NAME, () => {
@@ -44,14 +44,18 @@ describe('excel', () => {
 		
 		describe('header row', () => {
 			it('should have a column name "Topic" on 4th position', () => {
-				let columns = file.getTableColumns(SHEET, 'A', 1);
+				const columns = file.getTableColumns(SHEET, 'A', 1);
+				expect(columns.names[2]).toBe('Topic');
+			});
+			it('should accept string as row number', () => {
+				const columns = file.getTableColumns(SHEET, 'A', "1");
+				expect(columns.names[2]).toBe('Topic'); 
+			});
+			it('should read table at default position A1', () => {
+				const columns = file.getTableColumns(SHEET);
 				expect(columns.names[2]).toBe('Topic');
 			});
 			
-			it('should accept string as row number', () => {
-				let columns = file.getTableColumns(SHEET, 'A', "1");
-				expect(columns.names[2]).toBe('Topic'); 
-			});
 		}); 
 		
 		describe('getRowsForTable', () => {
@@ -109,10 +113,15 @@ describe('excel', () => {
 				let {table} = file.getTable(SHEET, 'A', 1);
 				expect(table.length).toBe(4);
 			});
+			
+			it('should have 4 rows in first sheet at default position', () => {
+				let {table} = file.getTable(0);
+				expect(table.length).toBe(4);
+			});
 		});
 		
 		describe('nextExcelColIndex', () => {
-			function nextIndex(startCol:string) { 
+			function nextIndex(startCol?:string) { 
 				const gen = file.nextExcelColIndex(startCol);
 				gen.next(); // reproduces startCol;
 				return gen.next().value;
@@ -132,6 +141,10 @@ describe('excel', () => {
 
 			it(`should produce column 'BN' after column 'BM'`, () => {
 				expect(nextIndex('BM')).toBe('BN');
+			});
+
+			it(`should produce column 'B' after default column`, () => {
+				expect(nextIndex()).toBe('B');
 			});
 		});
 	});	

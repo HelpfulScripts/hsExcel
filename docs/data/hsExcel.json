@@ -15,9 +15,1067 @@
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/excel.ts",
 			"comment": {
 				"shortText": "# Excel\nConvenience functions to access tables in Excel files.\nUses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.",
-				"text": "# Excel related functions\n- {@link excel.readFile readFile}\n\n"
+				"text": "# Excel related functions\n- {@link excel.File File}\n\n"
 			},
 			"children": [
+				{
+					"id": 41,
+					"name": "File",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "reads and returns a promise for an {@link #/hsLog/hsNode.excelFile excel file}.\n```\n{\n\t  \t{@link excel.File.getSheetNames getSheetNames},\n\t\t{@link excel.File.getTableColumns getTableColumns},\n\t\t{@link excel.File.getRowsForTable getRowsForTable},\n\t\t{@link excel.File.getTable getTable},\n\t\t{@link excel.File.nextExcelColIndex nextExcelColIndex},\n\t\t{@link excel.File.getCellValue getCellValue}\n}\n```\n# Usage\n```\nconst excel = require('./hsNode.excel');\nconst excelFile = excel.excelFile('./aFile.xlsx');\n```",
+						"tags": [
+							{
+								"tag": "param",
+								"text": "the name of the Excel file to read",
+								"param": "name"
+							},
+							{
+								"tag": "returns",
+								"text": "an object of functions providing access to the contents of the excel file.\n"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 43,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 44,
+									"name": "new File",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 45,
+											"name": "name",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 46,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "File",
+										"id": 41
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 69,
+									"character": 27
+								}
+							]
+						},
+						{
+							"id": 42,
+							"name": "workbook",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 69,
+									"character": 17
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "WorkBook"
+							}
+						},
+						{
+							"id": 92,
+							"name": "constructCol",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 93,
+									"name": "constructCol",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "returns the value of a cell, or undefined",
+										"returns": "the value of a cell, or undefined\n"
+									},
+									"parameters": [
+										{
+											"id": 94,
+											"name": "sheetName",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet object or sheet name to retrieve cells from;"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 95,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "index (1,...)"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 96,
+											"name": "it",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "an iterator over columns"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "TableStruct",
+										"id": 2
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 241,
+									"character": 21
+								}
+							]
+						},
+						{
+							"id": 69,
+							"name": "getCellValue",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 70,
+									"name": "getCellValue",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "returns the value of a cell, or undefined",
+										"returns": "the value of a cell, or undefined\n"
+									},
+									"parameters": [
+										{
+											"id": 71,
+											"name": "sheet",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet object or sheet name to retrieve cells from;"
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "reference",
+														"name": "WorkSheet"
+													}
+												]
+											}
+										},
+										{
+											"id": 72,
+											"name": "col",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the column index ('A',...)"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 73,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "index (1,...)"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 177,
+									"character": 20
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.getCellValue",
+								"id": 35
+							}
+						},
+						{
+							"id": 74,
+							"name": "getCellValues",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 75,
+									"name": "getCellValues",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "**Generator**, yields consecutive cell values over a row"
+									},
+									"parameters": [
+										{
+											"id": 76,
+											"name": "sheet",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet object or sheet name to retrieve cells from;"
+											},
+											"type": {
+												"type": "reference",
+												"name": "WorkSheet"
+											}
+										},
+										{
+											"id": 77,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the row to iterate over"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 78,
+											"name": "colIterator",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "iterable over columns;\nor an iterable that generates column indices.\n"
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "IterableIterator",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 201,
+									"character": 23
+								}
+							]
+						},
+						{
+							"id": 79,
+							"name": "getConsecutiveColumnNames",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 80,
+									"name": "getConsecutiveColumnNames",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "**Generator**, yields consecutive column names as an\n{col, name} object.\nThe generator exits when the first empty column name is encountered."
+									},
+									"parameters": [
+										{
+											"id": 81,
+											"name": "sheet",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet to scan"
+											},
+											"type": {
+												"type": "reference",
+												"name": "WorkSheet"
+											}
+										},
+										{
+											"id": 82,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the row to scan"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 83,
+											"name": "startCol",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "defaults to 'A'\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "IterableIterator",
+										"typeArguments": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 84,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 85,
+															"name": "col",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "excel.ts",
+																	"line": 218,
+																	"character": 13
+																}
+															],
+															"type": {
+																"type": "intrinsic",
+																"name": "string"
+															},
+															"defaultValue": "col"
+														},
+														{
+															"id": 86,
+															"name": "name",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "excel.ts",
+																	"line": 218,
+																	"character": 23
+																}
+															],
+															"type": {
+																"type": "intrinsic",
+																"name": "string"
+															},
+															"defaultValue": "this.getCellValue(sheet, col, row)"
+														}
+													],
+													"groups": [
+														{
+															"title": "Variables",
+															"kind": 32,
+															"children": [
+																85,
+																86
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 215,
+									"character": 35
+								}
+							]
+						},
+						{
+							"id": 87,
+							"name": "getRow",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 88,
+									"name": "getRow",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "returns an array[c] of values from columns that match indices provided `columns`.",
+										"returns": "array of column values in the row\n"
+									},
+									"parameters": [
+										{
+											"id": 89,
+											"name": "sheet",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet object or sheet name to retrieve cells from;"
+											},
+											"type": {
+												"type": "reference",
+												"name": "WorkSheet"
+											}
+										},
+										{
+											"id": 90,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the row to iterate over"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 91,
+											"name": "columns",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "a) an array of column names. b) an {from:'A', to:'Z'} object"
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 229,
+									"character": 15
+								}
+							]
+						},
+						{
+							"id": 54,
+							"name": "getRowsForTable",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 55,
+									"name": "getRowsForTable",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "getRowsForTable returns a 2D array[r][c] of row values, where the columns match the provided\ncolumns names."
+									},
+									"parameters": [
+										{
+											"id": 56,
+											"name": "table",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "an array of column descriptors."
+											},
+											"type": {
+												"type": "reference",
+												"name": "TableStruct",
+												"id": 2
+											}
+										},
+										{
+											"id": 57,
+											"name": "maxRows",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "if specified, determines the maximum number of rows to scan for.\nIf omitted, iteration stops when the first row of empty values is encountered.\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											},
+											"defaultValue": "0"
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "reference",
+											"name": "DataRow"
+										}
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 106,
+									"character": 23
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.getRowsForTable",
+								"id": 20
+							}
+						},
+						{
+							"id": 47,
+							"name": "getSheetNames",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 48,
+									"name": "getSheetNames",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "retrieves sheet names from a file",
+										"returns": "an array of sheet names\n"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 79,
+									"character": 21
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.getSheetNames",
+								"id": 11
+							}
+						},
+						{
+							"id": 61,
+							"name": "getTable",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 62,
+									"name": "getTable",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "gets a table of values, starting at the startCol and startRow.\nThe table includes all consecutive columns with valid names, and all consecutive\nrows with at least one valid cell value.",
+										"returns": "a tuple of {columns, table}\n"
+									},
+									"parameters": [
+										{
+											"id": 63,
+											"name": "sheetID",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet name or index from which to get the table"
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										},
+										{
+											"id": 64,
+											"name": "startCol",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "determines the left edge of the table; defaults to 'A'"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											},
+											"defaultValue": "\"A\""
+										},
+										{
+											"id": 65,
+											"name": "startRow",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "determines the top edge of the table; defaults to 1"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											},
+											"defaultValue": "1"
+										}
+									],
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 66,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 67,
+													"name": "columns",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {},
+													"sources": [
+														{
+															"fileName": "excel.ts",
+															"line": 167,
+															"character": 17
+														}
+													],
+													"type": {
+														"type": "reference",
+														"name": "TableStruct",
+														"id": 2
+													}
+												},
+												{
+													"id": 68,
+													"name": "table",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {},
+													"sources": [
+														{
+															"fileName": "excel.ts",
+															"line": 167,
+															"character": 24
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "array",
+															"elementType": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	},
+																	{
+																		"type": "reference",
+																		"name": "Date"
+																	}
+																]
+															}
+														}
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Variables",
+													"kind": 32,
+													"children": [
+														67,
+														68
+													]
+												}
+											]
+										}
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 163,
+									"character": 16
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.getTable",
+								"id": 25
+							}
+						},
+						{
+							"id": 49,
+							"name": "getTableColumns",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 50,
+									"name": "getTableColumns",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "getTableColumns retrieves an array of consecutive valid column names.",
+										"returns": "an excel tabkle description\n"
+									},
+									"parameters": [
+										{
+											"id": 51,
+											"name": "sheetName",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the sheet object to retrieve cells from"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 52,
+											"name": "startCol",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the first column of the table; defaults to 'A'."
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											},
+											"defaultValue": "\"A\""
+										},
+										{
+											"id": 53,
+											"name": "row",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the row to iterate over; defaults to 1."
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											},
+											"defaultValue": "1"
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "TableStruct",
+										"id": 2
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 94,
+									"character": 23
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.getTableColumns",
+								"id": 14
+							}
+						},
+						{
+							"id": 58,
+							"name": "nextExcelColIndex",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"isPublic": true
+							},
+							"signatures": [
+								{
+									"id": 59,
+									"name": "nextExcelColIndex",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "**generator** for Excel column indices starting at startCol.\nFollowing 'Z' the next column generated is 'AA' and so on. The generator\nstarts with producing startCol as first index.\n# Usage\n```\nfor (col of file.nextExcelColIndex(startCol='Y') {\n   printf(\"%s, \", col);      // -> Y, Z, AA, AB\n   if (col === 'AB')  { break; }\n}\n```"
+									},
+									"parameters": [
+										{
+											"id": 60,
+											"name": "startCol",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "the first column index ('A', ....) to yield; defaults to 'A'\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											},
+											"defaultValue": "\"A\""
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "IterableIterator",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 139,
+									"character": 29
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"name": "ExcelFile.nextExcelColIndex",
+								"id": 31
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								43
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								42
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								92,
+								69,
+								74,
+								79,
+								87,
+								54,
+								47,
+								61,
+								49,
+								58
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "excel.ts",
+							"line": 68,
+							"character": 17
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"name": "ExcelFile",
+							"id": 10
+						}
+					]
+				},
 				{
 					"id": 10,
 					"name": "ExcelFile",
@@ -38,7 +1096,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 260,
+									"line": 45,
 									"character": 16
 								}
 							],
@@ -110,7 +1168,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 260,
+											"line": 45,
 											"character": 17
 										}
 									]
@@ -128,7 +1186,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 257,
+									"line": 42,
 									"character": 19
 								}
 							],
@@ -186,7 +1244,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 257,
+											"line": 42,
 											"character": 20
 										}
 									]
@@ -204,7 +1262,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 255,
+									"line": 40,
 									"character": 17
 								}
 							],
@@ -235,7 +1293,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 255,
+											"line": 40,
 											"character": 18
 										}
 									]
@@ -253,7 +1311,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 258,
+									"line": 43,
 									"character": 12
 								}
 							],
@@ -330,7 +1388,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 258,
+											"line": 43,
 											"character": 13
 										}
 									]
@@ -348,7 +1406,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 256,
+									"line": 41,
 									"character": 19
 								}
 							],
@@ -416,7 +1474,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 256,
+											"line": 41,
 											"character": 20
 										}
 									]
@@ -434,7 +1492,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 259,
+									"line": 44,
 									"character": 21
 								}
 							],
@@ -483,7 +1541,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 259,
+											"line": 44,
 											"character": 22
 										}
 									]
@@ -508,8 +1566,15 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 254,
+							"line": 39,
 							"character": 26
+						}
+					],
+					"implementedBy": [
+						{
+							"type": "reference",
+							"name": "File",
+							"id": 41
 						}
 					]
 				},
@@ -534,7 +1599,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 250,
+									"line": 35,
 									"character": 11
 								}
 							],
@@ -555,7 +1620,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 251,
+									"line": 36,
 									"character": 9
 								}
 							],
@@ -581,7 +1646,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 249,
+							"line": 34,
 							"character": 22
 						}
 					]
@@ -609,7 +1674,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 243,
+									"line": 28,
 									"character": 12
 								}
 							],
@@ -632,7 +1697,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 242,
+									"line": 27,
 									"character": 13
 								}
 							],
@@ -652,7 +1717,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 240,
+									"line": 25,
 									"character": 9
 								}
 							],
@@ -675,7 +1740,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 241,
+									"line": 26,
 									"character": 13
 								}
 							],
@@ -700,13 +1765,13 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 239,
+							"line": 24,
 							"character": 28
 						}
 					]
 				},
 				{
-					"id": 41,
+					"id": 97,
 					"name": "XLSX",
 					"kind": 32,
 					"kindString": "Variable",
@@ -726,72 +1791,16 @@
 						"name": "any"
 					},
 					"defaultValue": " require('xlsx')"
-				},
-				{
-					"id": 42,
-					"name": "readFile",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 43,
-							"name": "readFile",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "reads and returns a promise for an {@link #/hsLog/hsNode.excelFile excel file}.\n```\n{\n\t  \t{@link excel.readFile.getSheetNames getSheetNames},\n\t\t{@link excel.readFile.getTableColumns getTableColumns},\n\t\t{@link excel.readFile.getRowsForTable getRowsForTable},\n\t\t{@link excel.readFile.getTable getTable},\n\t\t{@link excel.readFile.nextExcelColIndex nextExcelColIndex},\n\t\t{@link excel.readFile.getCellValue getCellValue}\n}\n```\n# Usage\n```\nconst excel = require('./hsNode.excel');\nconst excelFile = excel.excelFile('./aFile.xlsx');\n```",
-								"returns": "an object of functions providing access to the contents of the excel file.\n"
-							},
-							"parameters": [
-								{
-									"id": 44,
-									"name": "name",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the name of the Excel file to read"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								},
-								{
-									"id": 45,
-									"name": "options",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isOptional": true
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "ExcelFile",
-								"id": 10
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "excel.ts",
-							"line": 41,
-							"character": 24
-						}
-					]
 				}
 			],
 			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						41
+					]
+				},
 				{
 					"title": "Interfaces",
 					"kind": 256,
@@ -805,14 +1814,7 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						41
-					]
-				},
-				{
-					"title": "Functions",
-					"kind": 64,
-					"children": [
-						42
+						97
 					]
 				}
 			],
@@ -825,7 +1827,7 @@
 			]
 		},
 		{
-			"id": 46,
+			"id": 98,
 			"name": "\"index\"",
 			"kind": 1,
 			"kindString": "External module",
@@ -842,7 +1844,7 @@
 			]
 		},
 		{
-			"id": 47,
+			"id": 99,
 			"name": "\"overview\"",
 			"kind": 1,
 			"kindString": "External module",
@@ -851,8 +1853,8 @@
 			},
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/overview.ts",
 			"comment": {
-				"shortText": "# hsExcel",
-				"text": "Helpful Scripts Excel file access.\n[Github page](https://github.com/HelpfulScripts/hsExcel)\n\n"
+				"shortText": "# Excel\nHelpful Scripts convenience functions to access tables in Excel files.\n[Github page](https://github.com/HelpfulScripts/hsExcel)",
+				"text": "Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.\n\n# Excel related functions\n- {@link excel.File File}\n\n"
 			},
 			"sources": [
 				{
@@ -869,8 +1871,8 @@
 			"kind": 1,
 			"children": [
 				1,
-				46,
-				47
+				98,
+				99
 			]
 		}
 	]
