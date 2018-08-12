@@ -14,8 +14,7 @@
 			},
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/excel.ts",
 			"comment": {
-				"shortText": "# Excel\nConvenience functions to access tables in Excel files.\nUses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.",
-				"text": "# Excel related functions\n- &nbsp; {@link excel.File File}\n\n"
+				"shortText": "# Excel\nConvenience functions to access tables in Excel files.\nUses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}."
 			},
 			"children": [
 				{
@@ -92,7 +91,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 69,
+									"line": 66,
 									"character": 27
 								}
 							]
@@ -109,7 +108,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 69,
+									"line": 66,
 									"character": 17
 								}
 							],
@@ -192,7 +191,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 241,
+									"line": 238,
 									"character": 21
 								}
 							]
@@ -279,7 +278,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 177,
+									"line": 174,
 									"character": 20
 								}
 							],
@@ -370,7 +369,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 201,
+									"line": 198,
 									"character": 23
 								}
 							]
@@ -460,7 +459,7 @@
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 218,
+																	"line": 215,
 																	"character": 13
 																}
 															],
@@ -479,7 +478,7 @@
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 218,
+																	"line": 215,
 																	"character": 23
 																}
 															],
@@ -509,7 +508,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 215,
+									"line": 212,
 									"character": 35
 								}
 							]
@@ -593,7 +592,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 229,
+									"line": 226,
 									"character": 15
 								}
 							]
@@ -661,7 +660,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 106,
+									"line": 103,
 									"character": 23
 								}
 							],
@@ -703,7 +702,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 79,
+									"line": 76,
 									"character": 21
 								}
 							],
@@ -806,7 +805,7 @@
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 167,
+															"line": 164,
 															"character": 17
 														}
 													],
@@ -825,7 +824,7 @@
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 167,
+															"line": 164,
 															"character": 24
 														}
 													],
@@ -871,7 +870,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 163,
+									"line": 160,
 									"character": 16
 								}
 							],
@@ -899,7 +898,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "getTableColumns retrieves an array of consecutive valid column names.",
-										"returns": "an excel tabkle description\n"
+										"returns": "an excel table description\n"
 									},
 									"parameters": [
 										{
@@ -957,7 +956,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 94,
+									"line": 91,
 									"character": 23
 								}
 							],
@@ -1018,7 +1017,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 139,
+									"line": 136,
 									"character": 29
 								}
 							],
@@ -1064,7 +1063,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 68,
+							"line": 65,
 							"character": 17
 						}
 					],
@@ -1096,7 +1095,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 45,
+									"line": 42,
 									"character": 16
 								}
 							],
@@ -1168,7 +1167,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 45,
+											"line": 42,
 											"character": 17
 										}
 									]
@@ -1186,7 +1185,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 42,
+									"line": 39,
 									"character": 19
 								}
 							],
@@ -1244,7 +1243,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 42,
+											"line": 39,
 											"character": 20
 										}
 									]
@@ -1262,7 +1261,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 40,
+									"line": 37,
 									"character": 17
 								}
 							],
@@ -1293,7 +1292,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 40,
+											"line": 37,
 											"character": 18
 										}
 									]
@@ -1311,7 +1310,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 43,
+									"line": 40,
 									"character": 12
 								}
 							],
@@ -1388,7 +1387,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 43,
+											"line": 40,
 											"character": 13
 										}
 									]
@@ -1406,7 +1405,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 41,
+									"line": 38,
 									"character": 19
 								}
 							],
@@ -1474,7 +1473,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 41,
+											"line": 38,
 											"character": 20
 										}
 									]
@@ -1492,7 +1491,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 44,
+									"line": 41,
 									"character": 21
 								}
 							],
@@ -1541,7 +1540,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 44,
+											"line": 41,
 											"character": 22
 										}
 									]
@@ -1566,7 +1565,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 39,
+							"line": 36,
 							"character": 26
 						}
 					],
@@ -1599,7 +1598,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 35,
+									"line": 32,
 									"character": 11
 								}
 							],
@@ -1620,7 +1619,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 36,
+									"line": 33,
 									"character": 9
 								}
 							],
@@ -1646,7 +1645,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 34,
+							"line": 31,
 							"character": 22
 						}
 					]
@@ -1674,7 +1673,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 28,
+									"line": 25,
 									"character": 12
 								}
 							],
@@ -1697,7 +1696,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 27,
+									"line": 24,
 									"character": 13
 								}
 							],
@@ -1717,7 +1716,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 25,
+									"line": 22,
 									"character": 9
 								}
 							],
@@ -1740,7 +1739,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 26,
+									"line": 23,
 									"character": 13
 								}
 							],
@@ -1765,7 +1764,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 24,
+							"line": 21,
 							"character": 28
 						}
 					]
@@ -1782,7 +1781,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 12,
+							"line": 9,
 							"character": 10
 						}
 					],
