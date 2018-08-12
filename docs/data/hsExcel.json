@@ -15,7 +15,7 @@
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/excel.ts",
 			"comment": {
 				"shortText": "# Excel\nConvenience functions to access tables in Excel files.\nUses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.",
-				"text": "# Excel related functions\n- {@link excel.File File}\n\n"
+				"text": "# Excel related functions\n- &nbsp; {@link excel.File File}\n\n"
 			},
 			"children": [
 				{
@@ -1854,7 +1854,7 @@
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/overview.ts",
 			"comment": {
 				"shortText": "# Excel\nHelpful Scripts convenience functions to access tables in Excel files.\n[`[Github page]`](https://github.com/HelpfulScripts/hsExcel)\n[`[Coverage Info]`](./data/src/hsExcel/coverage/)\n___",
-				"text": "Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.\n\n# Excel related functions\n- {@link excel.File File}\n\n"
+				"text": "Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.\n\n#### Excel related functions\n- &nbsp; {@link excel.File File} access to Excel files.\n\n"
 			},
 			"sources": [
 				{

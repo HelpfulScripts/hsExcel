@@ -3,9 +3,6 @@
  * Convenience functions to access tables in Excel files.
  * Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.
  * 
- * # Excel related functions
- * - {@link excel.File File} 
- *
  */
 
  /** */
@@ -89,7 +86,7 @@ export class File implements ExcelFile {
 	 * @param sheetName the sheet object to retrieve cells from
 	 * @param startCol the first column of the table; defaults to 'A'.
 	 * @param row the row to iterate over; defaults to 1.
-	 * @returns an excel tabkle description
+	 * @returns an excel table description
 	 */
 	public getTableColumns(sheetName:string, startCol='A', row=1):TableStruct {
         const sheet:WorkSheet = this.workbook.Sheets[sheetName];

@@ -7,8 +7,8 @@
  * 
  * Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.
  * 
- * # Excel related functions
- * - {@link excel.File File} 
+ * #### Excel related functions
+ * - &nbsp; {@link excel.File File} access to Excel files.
  *
  */
 
