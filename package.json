@@ -9,6 +9,7 @@
     "javascript"
   ],
   "description": "Helpful Scripts Excel file access",
+  "license": "MIT",
   "homepage": "https://helpfulscripts.github.io/hsExcel/indexGH.html#!/api/hsExcel/0",
   "author": {
     "name": "masterscripter",
