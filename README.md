@@ -5,6 +5,7 @@ hsExcel
 [![Coverage Status](https://coveralls.io/repos/github/HelpfulScripts/hsExcel/badge.svg?branch=master)](https://coveralls.io/github/HelpfulScripts/hsExcel?branch=master)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/) 
 [![NPM License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://www.npmjs.com/package/hsexcel) 
+[![Known Vulnerabilities](https://snyk.io/test/github/HelpfulScripts/hsExcel/badge.svg?targetFile=package.json)](https://snyk.io/test/github/HelpfulScripts/hsExcel?targetFile=package.json)
 
 Helpful Scripts ES6 access to Excel files based on [xlsx](https://www.npmjs.com/package/xlsx).
 
