@@ -19,6 +19,10 @@
     "build": "grunt travis",
     "test": "grunt test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelpfulScripts/hsExcel.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
