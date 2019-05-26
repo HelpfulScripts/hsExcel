@@ -2,7 +2,7 @@ hsExcel
 ========
 [![npm version](https://badge.fury.io/js/hsexcel.svg)](https://badge.fury.io/js/hsexcel)
 [![GitHub](https://img.shields.io/badge/GitHub-hsExcel-blue.svg)](https://github.com/helpfulscripts/hsexcel)
-[![docs](https://img.shields.io/badge/hsDocs-hsExcel-blue.svg)](https://helpfulscripts.github.io/hsExcel/#!/api/hsexcel/0)
+[![docs](https://img.shields.io/badge/hsDocs-hsExcel-blue.svg)](https://helpfulscripts.github.io/hsExcel/#!/api/hsExcel/0)
 [![Build Status](https://travis-ci.org/HelpfulScripts/hsExcel.svg?branch=master)](https://travis-ci.org/HelpfulScripts/hsExcel)
 [![Coverage Status](https://coveralls.io/repos/github/HelpfulScripts/hsExcel/badge.svg?branch=master)](https://coveralls.io/github/HelpfulScripts/hsExcel?branch=master)
 [![NPM License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://www.npmjs.com/package/hsexcel) 
