@@ -1,6 +1,6 @@
 hsExcel
 ========
-[![GitHub version](https://badge.fury.io/gh/helpfulscripts/hsexcel.svg)](https://badge.fury.io/gh/helpfulscripts/sexcel)
+[![GitHub version](https://badge.fury.io/gh/helpfulscripts%2Fhsexcel.svg)](https://badge.fury.io/gh/helpfulscripts/sexcel)
 [![npm version](https://badge.fury.io/js/hsexcel.svg)](https://badge.fury.io/js/hsexcel)
 [![docs](https://img.shields.io/badge/hsDocs--blue.svg)](https://helpfulscripts.github.io/hsExcel/#!/api/hsexcel/0)
 [![Build Status](https://travis-ci.org/HelpfulScripts/hsExcel.svg?branch=master)](https://travis-ci.org/HelpfulScripts/hsExcel)
