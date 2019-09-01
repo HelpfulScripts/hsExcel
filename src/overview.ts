@@ -5,7 +5,7 @@
  * [`[Coverage Info]`](./data/src/hsExcel/coverage/)
  * ___
  * 
- * Uses the {@link https://github.com/SheetJS/js-xlsx Sheet JS xlsx parser and writer}.
+ * Uses the [Sheet JS xlsx parser and writer](https://github.com/SheetJS/js-xlsx).
  * 
  * #### Excel related functions
  * - &nbsp; {@link excel.File File} access to Excel files.
