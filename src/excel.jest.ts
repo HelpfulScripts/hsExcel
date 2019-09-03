@@ -63,7 +63,7 @@ describe('excel', () => {
 			it('should fail for illegal columns', () => {
 				function noSheet() {
                     try { file.getRowsForTable({}); }
-                    catch(e) { err = e.toString(); };
+                    catch(e) { err = e.toString(); }
                      
                 }
                 noSheet();
