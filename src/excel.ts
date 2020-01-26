@@ -6,7 +6,7 @@
  */
 
  /** */
-const XLSX	= require('xlsx');
+import XLSX from 'xlsx';
 
 import { DataRow}   from 'hsdatab';
 import { WorkBook,
@@ -63,33 +63,31 @@ export interface ExcelFile {
  * @returns an object of functions providing access to the contents of the excel file.
  */
 export class File implements ExcelFile { 
-	private workbook:WorkBook;
+	private wb:WorkBook;
 
     constructor(name:string, options?:any) {
-        this.workbook = XLSX.readFile(name, options);
+        this.wb = XLSX.readFile(name, options);
     }
+
+    public get workbook() { return this.wb; }
 
 	/**
 	 * retrieves sheet names from a file
 	 * @returns {[string]} an array of sheet names
 	 */
 	public getSheetNames():string[] {
-		const names:string[] = [];
-		for (let s in this.workbook.Sheets) { 
-			names.push(s);
-		}
-		return names;
+		return this.wb.SheetNames;
 	}
 
 	/**
 	 * getTableColumns retrieves an array of consecutive valid column names.
-	 * @param sheetName the sheet object to retrieve cells from
+	 * @param sheetName the sheet name to retrieve cells from
 	 * @param startCol the first column of the table; defaults to 'A'.
 	 * @param row the row to iterate over; defaults to 1.
 	 * @returns an excel table description
 	 */
 	public getTableColumns(sheetName:string, startCol='A', row=1):TableStruct {
-        const sheet:WorkSheet = this.workbook.Sheets[sheetName];
+        const sheet:WorkSheet = this.wb.Sheets[sheetName];
 		return this.constructCol(sheetName, row, this.getConsecutiveColumnNames(sheet, row, startCol));
 	}
 	
@@ -102,7 +100,7 @@ export class File implements ExcelFile {
 	 */
 	public getRowsForTable(table:TableStruct, maxRows=0):DataRow[] {
 		if (!table.sheetName) { throw new Error('illegal table parameter in getRowsForTable'); }
-		const sheet:WorkSheet = this.workbook.Sheets[table.sheetName];
+		const sheet:WorkSheet = this.wb.Sheets[table.sheetName];
 		const result:DataRow[] = [];
 		let row=0; 
 		while (true) {
@@ -172,7 +170,7 @@ export class File implements ExcelFile {
 	 * @returns the value of a cell, or undefined
 	 */
 	public getCellValue(sheet:string|WorkSheet, col:string, row:number):string {
-		if (typeof sheet === 'string') { sheet = this.workbook.Sheets[sheet]; } 
+		if (typeof sheet === 'string') { sheet = this.wb.Sheets[sheet]; } 
         let c:CellObject;
 		if (sheet[col+row] && sheet[col+row].v!=='') { 
             c = sheet[col+row];

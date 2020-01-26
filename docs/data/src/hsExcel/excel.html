@@ -29,7 +29,7 @@
 <p id=6 class="line"><span>&nbsp;&nbsp;&nbsp;6</span><comment>&nbsp;*/</comment></p>
 <p id=7 class="line"><span>&nbsp;&nbsp;&nbsp;7</span></p>
 <p id=8 class="line"><span>&nbsp;&nbsp;&nbsp;8</span>&nbsp;<comment>/**&nbsp;*/</comment></p>
-<p id=9 class="line"><span>&nbsp;&nbsp;&nbsp;9</span>const&nbsp;XLSX	=&nbsp;require(<quote>'xlsx'</quote>);</p>
+<p id=9 class="line"><span>&nbsp;&nbsp;&nbsp;9</span>import&nbsp;XLSX&nbsp;from&nbsp;<quote>'xlsx'</quote>;</p>
 <p id=10 class="line"><span>&nbsp;&nbsp;10</span></p>
 <p id=11 class="line"><span>&nbsp;&nbsp;11</span>import&nbsp;{&nbsp;DataRow}&nbsp;&nbsp;&nbsp;from&nbsp;<quote>'hsdatab'</quote>;</p>
 <p id=12 class="line"><span>&nbsp;&nbsp;12</span>import&nbsp;{&nbsp;WorkBook,</p>
@@ -86,194 +86,192 @@
 <p id=63 class="line"><span>&nbsp;&nbsp;63</span><comment>&nbsp;*&nbsp;@returns&nbsp;an&nbsp;object&nbsp;of&nbsp;functions&nbsp;providing&nbsp;access&nbsp;to&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;excel&nbsp;file.</comment></p>
 <p id=64 class="line"><span>&nbsp;&nbsp;64</span><comment>&nbsp;*/</comment></p>
 <p id=65 class="line"><span>&nbsp;&nbsp;65</span>export&nbsp;class&nbsp;File&nbsp;implements&nbsp;ExcelFile&nbsp;{&nbsp;</p>
-<p id=66 class="line"><span>&nbsp;&nbsp;66</span>	private&nbsp;workbook:WorkBook;</p>
+<p id=66 class="line"><span>&nbsp;&nbsp;66</span>	private&nbsp;wb:WorkBook;</p>
 <p id=67 class="line"><span>&nbsp;&nbsp;67</span></p>
 <p id=68 class="line"><span>&nbsp;&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;constructor(name:string,&nbsp;options?:any)&nbsp;{</p>
-<p id=69 class="line"><span>&nbsp;&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.workbook&nbsp;=&nbsp;XLSX.readFile(name,&nbsp;options);</p>
+<p id=69 class="line"><span>&nbsp;&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.wb&nbsp;=&nbsp;XLSX.readFile(name,&nbsp;options);</p>
 <p id=70 class="line"><span>&nbsp;&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
 <p id=71 class="line"><span>&nbsp;&nbsp;71</span></p>
-<p id=72 class="line"><span>&nbsp;&nbsp;72</span>	<comment>/**</comment></p>
-<p id=73 class="line"><span>&nbsp;&nbsp;73</span><comment>	&nbsp;*&nbsp;retrieves&nbsp;sheet&nbsp;names&nbsp;from&nbsp;a&nbsp;file</comment></p>
-<p id=74 class="line"><span>&nbsp;&nbsp;74</span><comment>	&nbsp;*&nbsp;@returns&nbsp;{[string]}&nbsp;an&nbsp;array&nbsp;of&nbsp;sheet&nbsp;names</comment></p>
-<p id=75 class="line"><span>&nbsp;&nbsp;75</span><comment>	&nbsp;*/</comment></p>
-<p id=76 class="line"><span>&nbsp;&nbsp;76</span>	public&nbsp;getSheetNames():string[]&nbsp;{</p>
-<p id=77 class="line"><span>&nbsp;&nbsp;77</span>		const&nbsp;names:string[]&nbsp;=&nbsp;[];</p>
-<p id=78 class="line"><span>&nbsp;&nbsp;78</span>		for&nbsp;(let&nbsp;s&nbsp;in&nbsp;this.workbook.Sheets)&nbsp;{&nbsp;</p>
-<p id=79 class="line"><span>&nbsp;&nbsp;79</span>			names.push(s);</p>
-<p id=80 class="line"><span>&nbsp;&nbsp;80</span>		}</p>
-<p id=81 class="line"><span>&nbsp;&nbsp;81</span>		return&nbsp;names;</p>
-<p id=82 class="line"><span>&nbsp;&nbsp;82</span>	}</p>
-<p id=83 class="line"><span>&nbsp;&nbsp;83</span></p>
-<p id=84 class="line"><span>&nbsp;&nbsp;84</span>	<comment>/**</comment></p>
-<p id=85 class="line"><span>&nbsp;&nbsp;85</span><comment>	&nbsp;*&nbsp;getTableColumns&nbsp;retrieves&nbsp;an&nbsp;array&nbsp;of&nbsp;consecutive&nbsp;valid&nbsp;column&nbsp;names.</comment></p>
-<p id=86 class="line"><span>&nbsp;&nbsp;86</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetName&nbsp;the&nbsp;sheet&nbsp;object&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from</comment></p>
-<p id=87 class="line"><span>&nbsp;&nbsp;87</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;the&nbsp;first&nbsp;column&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote>.</comment></p>
-<p id=88 class="line"><span>&nbsp;&nbsp;88</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over;&nbsp;defaults&nbsp;to&nbsp;1.</comment></p>
-<p id=89 class="line"><span>&nbsp;&nbsp;89</span><comment>	&nbsp;*&nbsp;@returns&nbsp;an&nbsp;excel&nbsp;table&nbsp;description</comment></p>
-<p id=90 class="line"><span>&nbsp;&nbsp;90</span><comment>	&nbsp;*/</comment></p>
-<p id=91 class="line"><span>&nbsp;&nbsp;91</span>	public&nbsp;getTableColumns(sheetName:string,&nbsp;startCol=<quote>'A'</quote>,&nbsp;row=1):TableStruct&nbsp;{</p>
-<p id=92 class="line"><span>&nbsp;&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sheet:WorkSheet&nbsp;=&nbsp;this.workbook.Sheets[sheetName];</p>
-<p id=93 class="line"><span>&nbsp;&nbsp;93</span>		return&nbsp;this.constructCol(sheetName,&nbsp;row,&nbsp;this.getConsecutiveColumnNames(sheet,&nbsp;row,&nbsp;startCol));</p>
-<p id=94 class="line"><span>&nbsp;&nbsp;94</span>	}</p>
-<p id=95 class="line"><span>&nbsp;&nbsp;95</span>	</p>
-<p id=96 class="line"><span>&nbsp;&nbsp;96</span>	<comment>/**</comment></p>
-<p id=97 class="line"><span>&nbsp;&nbsp;97</span><comment>	&nbsp;*&nbsp;getRowsForTable&nbsp;returns&nbsp;a&nbsp;2D&nbsp;array[r][c]&nbsp;of&nbsp;row&nbsp;values,&nbsp;where&nbsp;the&nbsp;columns&nbsp;match&nbsp;the&nbsp;provided&nbsp;</comment></p>
-<p id=98 class="line"><span>&nbsp;&nbsp;98</span><comment>	&nbsp;*&nbsp;columns&nbsp;names.&nbsp;</comment></p>
-<p id=99 class="line"><span>&nbsp;&nbsp;99</span><comment>	&nbsp;*&nbsp;@param&nbsp;table&nbsp;an&nbsp;array&nbsp;of&nbsp;column&nbsp;descriptors.&nbsp;</comment></p>
-<p id=100 class="line"><span>&nbsp;100</span><comment>	&nbsp;*&nbsp;@param&nbsp;maxRows&nbsp;if&nbsp;specified,&nbsp;determines&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;rows&nbsp;to&nbsp;scan&nbsp;for.&nbsp;</comment></p>
-<p id=101 class="line"><span>&nbsp;101</span><comment>	&nbsp;*&nbsp;If&nbsp;omitted,&nbsp;iteration&nbsp;stops&nbsp;when&nbsp;the&nbsp;first&nbsp;row&nbsp;of&nbsp;empty&nbsp;values&nbsp;is&nbsp;encountered.</comment></p>
-<p id=102 class="line"><span>&nbsp;102</span><comment>	&nbsp;*/</comment></p>
-<p id=103 class="line"><span>&nbsp;103</span>	public&nbsp;getRowsForTable(table:TableStruct,&nbsp;maxRows=0):DataRow[]&nbsp;{</p>
-<p id=104 class="line"><span>&nbsp;104</span>		if&nbsp;(!table.sheetName)&nbsp;{&nbsp;throw&nbsp;new&nbsp;Error(<quote>'illegal&nbsp;table&nbsp;parameter&nbsp;in&nbsp;getRowsForTable'</quote>);&nbsp;}</p>
-<p id=105 class="line"><span>&nbsp;105</span>		const&nbsp;sheet:WorkSheet&nbsp;=&nbsp;this.workbook.Sheets[table.sheetName];</p>
-<p id=106 class="line"><span>&nbsp;106</span>		const&nbsp;result:DataRow[]&nbsp;=&nbsp;[];</p>
-<p id=107 class="line"><span>&nbsp;107</span>		let&nbsp;row=0;&nbsp;</p>
-<p id=108 class="line"><span>&nbsp;108</span>		while&nbsp;(true)&nbsp;{</p>
-<p id=109 class="line"><span>&nbsp;109</span>			let&nbsp;newRow&nbsp;=&nbsp;this.getRow(sheet,&nbsp;row+table.headerRow+1,&nbsp;table.colIndex);</p>
-<p id=110 class="line"><span>&nbsp;110</span>			let&nbsp;filledCells&nbsp;=&nbsp;0;</p>
-<p id=111 class="line"><span>&nbsp;111</span>			for&nbsp;(let&nbsp;c&nbsp;in&nbsp;newRow)&nbsp;{&nbsp;if&nbsp;(newRow[c])&nbsp;{&nbsp;filledCells++;&nbsp;}}</p>
-<p id=112 class="line"><span>&nbsp;112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row++;</p>
-<p id=113 class="line"><span>&nbsp;113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;only&nbsp;return&nbsp;non-empty&nbsp;rows</comment></p>
-<p id=114 class="line"><span>&nbsp;114</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(filledCells&nbsp;>&nbsp;0)&nbsp;{&nbsp;result.push(newRow);&nbsp;}</p>
-<p id=115 class="line"><span>&nbsp;115</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;no&nbsp;maxRows&nbsp;specified:&nbsp;break&nbsp;upon&nbsp;first&nbsp;empty&nbsp;row</comment></p>
-<p id=116 class="line"><span>&nbsp;116</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(maxRows<=0)&nbsp;{&nbsp;&nbsp;break;&nbsp;}</p>
-<p id=117 class="line"><span>&nbsp;117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;rows&nbsp;exceed&nbsp;maxRows:&nbsp;break;</comment></p>
-<p id=118 class="line"><span>&nbsp;118</span><comment></comment>			if&nbsp;(maxRows>0&nbsp;&&&nbsp;row>=maxRows)&nbsp;{&nbsp;break;&nbsp;}</p>
-<p id=119 class="line"><span>&nbsp;119</span>		}</p>
-<p id=120 class="line"><span>&nbsp;120</span>		return&nbsp;result;</p>
-<p id=121 class="line"><span>&nbsp;121</span>	}</p>
-<p id=122 class="line"><span>&nbsp;122</span>	</p>
-<p id=123 class="line"><span>&nbsp;123</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>/**</comment></p>
-<p id=124 class="line"><span>&nbsp;124</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;**generator**&nbsp;for&nbsp;Excel&nbsp;column&nbsp;indices&nbsp;starting&nbsp;at&nbsp;startCol.&nbsp;</comment></p>
-<p id=125 class="line"><span>&nbsp;125</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Following&nbsp;<quote>'Z'</quote>&nbsp;the&nbsp;next&nbsp;column&nbsp;generated&nbsp;is&nbsp;<quote>'AA'</quote>&nbsp;and&nbsp;so&nbsp;on.&nbsp;The&nbsp;generator&nbsp;</comment></p>
-<p id=126 class="line"><span>&nbsp;126</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;starts&nbsp;with&nbsp;producing&nbsp;startCol&nbsp;as&nbsp;first&nbsp;index.</comment></p>
-<p id=127 class="line"><span>&nbsp;127</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;#&nbsp;Usage</comment></p>
-<p id=128 class="line"><span>&nbsp;128</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
-<p id=129 class="line"><span>&nbsp;129</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;for&nbsp;(col&nbsp;of&nbsp;file.nextExcelColIndex(startCol=<quote>'Y'</quote>)&nbsp;{&nbsp;</comment></p>
-<p id=130 class="line"><span>&nbsp;130</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;printf(<quote>"%s,&nbsp;"</quote>,&nbsp;col);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;->&nbsp;Y,&nbsp;Z,&nbsp;AA,&nbsp;AB</comment></comment></p>
-<p id=131 class="line"><span>&nbsp;131</span><comment><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(col&nbsp;===&nbsp;<quote>'AB'</quote>)&nbsp;&nbsp;{&nbsp;break;&nbsp;}</comment></p>
-<p id=132 class="line"><span>&nbsp;132</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;}</comment></p>
-<p id=133 class="line"><span>&nbsp;133</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
-<p id=134 class="line"><span>&nbsp;134</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;the&nbsp;first&nbsp;column&nbsp;index&nbsp;(<quote>'A'</quote>,&nbsp;....)&nbsp;to&nbsp;yield;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
-<p id=135 class="line"><span>&nbsp;135</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</comment></p>
-<p id=136 class="line"><span>&nbsp;136</span>&nbsp;&nbsp;&nbsp;&nbsp;public*&nbsp;nextExcelColIndex(startCol=<quote>'A'</quote>):IterableIterator<string>&nbsp;{</p>
-<p id=137 class="line"><span>&nbsp;137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;nextChar(c:string):string&nbsp;{&nbsp;return&nbsp;String.fromCharCode(c.charCodeAt(0)&nbsp;+&nbsp;1);&nbsp;}</p>
-<p id=138 class="line"><span>&nbsp;138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p id=139 class="line"><span>&nbsp;139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;c&nbsp;=&nbsp;startCol;</p>
-<p id=140 class="line"><span>&nbsp;140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{</p>
-<p id=141 class="line"><span>&nbsp;141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;c;</p>
-<p id=142 class="line"><span>&nbsp;142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c.length&nbsp;===&nbsp;1)&nbsp;{</p>
-<p id=143 class="line"><span>&nbsp;143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(c&nbsp;<&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])&nbsp;:&nbsp;<quote>'AA'</quote>;</p>
-<p id=144 class="line"><span>&nbsp;144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</p>
-<p id=145 class="line"><span>&nbsp;145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ch&nbsp;=&nbsp;nextChar(c[1]);</p>
-<p id=146 class="line"><span>&nbsp;146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(ch&nbsp;>&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])+<quote>'A'</quote>&nbsp;:&nbsp;c[0]&nbsp;+&nbsp;ch;</p>
-<p id=147 class="line"><span>&nbsp;147</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-<p id=148 class="line"><span>&nbsp;148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-<p id=149 class="line"><span>&nbsp;149</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-<p id=150 class="line"><span>&nbsp;150</span></p>
-<p id=151 class="line"><span>&nbsp;151</span>	<comment>/**</comment></p>
-<p id=152 class="line"><span>&nbsp;152</span><comment>	&nbsp;*&nbsp;gets&nbsp;a&nbsp;table&nbsp;of&nbsp;values,&nbsp;starting&nbsp;at&nbsp;the&nbsp;startCol&nbsp;and&nbsp;startRow.</comment></p>
-<p id=153 class="line"><span>&nbsp;153</span><comment>	&nbsp;*&nbsp;The&nbsp;table&nbsp;includes&nbsp;all&nbsp;consecutive&nbsp;columns&nbsp;with&nbsp;valid&nbsp;names,&nbsp;and&nbsp;all&nbsp;consecutive</comment></p>
-<p id=154 class="line"><span>&nbsp;154</span><comment>	&nbsp;*&nbsp;rows&nbsp;with&nbsp;at&nbsp;least&nbsp;one&nbsp;valid&nbsp;cell&nbsp;value.</comment></p>
-<p id=155 class="line"><span>&nbsp;155</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetID&nbsp;the&nbsp;sheet&nbsp;name&nbsp;or&nbsp;index&nbsp;from&nbsp;which&nbsp;to&nbsp;get&nbsp;the&nbsp;table</comment></p>
-<p id=156 class="line"><span>&nbsp;156</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;determines&nbsp;the&nbsp;left&nbsp;edge&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
-<p id=157 class="line"><span>&nbsp;157</span><comment>	&nbsp;*&nbsp;@param&nbsp;startRow&nbsp;determines&nbsp;the&nbsp;top&nbsp;edge&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;1</comment></p>
-<p id=158 class="line"><span>&nbsp;158</span><comment>	&nbsp;*&nbsp;@returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;{columns,&nbsp;table}&nbsp;</comment></p>
-<p id=159 class="line"><span>&nbsp;159</span><comment>	&nbsp;*/</comment></p>
-<p id=160 class="line"><span>&nbsp;160</span>	public&nbsp;getTable(sheetID:string|number,&nbsp;startCol=<quote>'A'</quote>,&nbsp;startRow=1)&nbsp;{</p>
-<p id=161 class="line"><span>&nbsp;161</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sheetName&nbsp;=&nbsp;(typeof&nbsp;sheetID&nbsp;===&nbsp;<quote>'string'</quote>)?&nbsp;sheetID&nbsp;:&nbsp;this.getSheetNames()[sheetID];</p>
-<p id=162 class="line"><span>&nbsp;162</span>		const&nbsp;columns:TableStruct&nbsp;=&nbsp;this.getTableColumns(sheetName,&nbsp;startCol,&nbsp;startRow);</p>
-<p id=163 class="line"><span>&nbsp;163</span>		const&nbsp;table:DataRow[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;this.getRowsForTable(columns);</p>
-<p id=164 class="line"><span>&nbsp;164</span>		return&nbsp;{columns,&nbsp;table};</p>
-<p id=165 class="line"><span>&nbsp;165</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-<p id=166 class="line"><span>&nbsp;166</span></p>
-<p id=167 class="line"><span>&nbsp;167</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>/**</comment></p>
-<p id=168 class="line"><span>&nbsp;168</span><comment>	&nbsp;*&nbsp;returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
-<p id=169 class="line"><span>&nbsp;169</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
-<p id=170 class="line"><span>&nbsp;170</span><comment>	&nbsp;*&nbsp;@param&nbsp;col&nbsp;the&nbsp;column&nbsp;index&nbsp;(<quote>'A'</quote>,...)</comment></p>
-<p id=171 class="line"><span>&nbsp;171</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;index&nbsp;(1,...)</comment></p>
-<p id=172 class="line"><span>&nbsp;172</span><comment>	&nbsp;*&nbsp;@returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
-<p id=173 class="line"><span>&nbsp;173</span><comment>	&nbsp;*/</comment></p>
-<p id=174 class="line"><span>&nbsp;174</span>	public&nbsp;getCellValue(sheet:string|WorkSheet,&nbsp;col:string,&nbsp;row:number):string&nbsp;{</p>
-<p id=175 class="line"><span>&nbsp;175</span>		if&nbsp;(typeof&nbsp;sheet&nbsp;===&nbsp;<quote>'string'</quote>)&nbsp;{&nbsp;sheet&nbsp;=&nbsp;this.workbook.Sheets[sheet];&nbsp;}&nbsp;</p>
-<p id=176 class="line"><span>&nbsp;176</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;c:CellObject;</p>
-<p id=177 class="line"><span>&nbsp;177</span>		if&nbsp;(sheet[col+row]&nbsp;&&&nbsp;sheet[col+row].v!==<quote>''</quote>)&nbsp;{&nbsp;</p>
-<p id=178 class="line"><span>&nbsp;178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;sheet[col+row];</p>
-<p id=179 class="line"><span>&nbsp;179</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;val&nbsp;=&nbsp;c.w!==undefined?&nbsp;c.w&nbsp;:&nbsp;c.v;</p>
-<p id=180 class="line"><span>&nbsp;180</span>			if&nbsp;(c)&nbsp;{&nbsp;switch(c.t)&nbsp;{</p>
-<p id=181 class="line"><span>&nbsp;181</span>				case&nbsp;<quote>'s'</quote>:&nbsp;return&nbsp;(<string>val).replace(/,/g,<quote>';'</quote>).replace(/[\n\r]+/g,<quote>'&nbsp;'</quote>).trim();</p>
-<p id=182 class="line"><span>&nbsp;182</span>				case&nbsp;<quote>'n'</quote>:&nbsp;<comment>/*&nbsp;falls&nbsp;through&nbsp;*/</comment>&nbsp;</p>
-<p id=183 class="line"><span>&nbsp;183</span>				default:&nbsp;return&nbsp;c.w.replace(/,/g,<quote>''</quote>);</p>
-<p id=184 class="line"><span>&nbsp;184</span>			}}</p>
-<p id=185 class="line"><span>&nbsp;185</span>		}</p>
-<p id=186 class="line"><span>&nbsp;186</span>		return&nbsp;<quote>''</quote>;&nbsp;</p>
-<p id=187 class="line"><span>&nbsp;187</span>	}</p>
-<p id=188 class="line"><span>&nbsp;188</span></p>
-<p id=189 class="line"><span>&nbsp;189</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>//-----------&nbsp;private&nbsp;methods&nbsp;------------------</comment></p>
-<p id=190 class="line"><span>&nbsp;190</span><comment></comment>		</p>
-<p id=191 class="line"><span>&nbsp;191</span>	<comment>/**</comment></p>
-<p id=192 class="line"><span>&nbsp;192</span><comment>	&nbsp;*&nbsp;**Generator**,&nbsp;yields&nbsp;consecutive&nbsp;cell&nbsp;values&nbsp;over&nbsp;a&nbsp;row</comment></p>
-<p id=193 class="line"><span>&nbsp;193</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
-<p id=194 class="line"><span>&nbsp;194</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over</comment></p>
-<p id=195 class="line"><span>&nbsp;195</span><comment>	&nbsp;*&nbsp;@param&nbsp;colIterator&nbsp;iterable&nbsp;over&nbsp;columns;</comment></p>
-<p id=196 class="line"><span>&nbsp;196</span><comment>	&nbsp;*&nbsp;or&nbsp;an&nbsp;iterable&nbsp;that&nbsp;generates&nbsp;column&nbsp;indices.</comment></p>
-<p id=197 class="line"><span>&nbsp;197</span><comment>	&nbsp;*/</comment></p>
-<p id=198 class="line"><span>&nbsp;198</span>	private*&nbsp;getCellValues(sheet:WorkSheet,&nbsp;row:number,&nbsp;colIterator:string[])&nbsp;{</p>
-<p id=199 class="line"><span>&nbsp;199</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;colIterator)&nbsp;{</p>
-<p id=200 class="line"><span>&nbsp;200</span>			yield&nbsp;this.getCellValue(sheet,&nbsp;col,&nbsp;row);&nbsp;</p>
-<p id=201 class="line"><span>&nbsp;201</span>		}</p>
-<p id=202 class="line"><span>&nbsp;202</span>	}</p>
-<p id=203 class="line"><span>&nbsp;203</span>	</p>
-<p id=204 class="line"><span>&nbsp;204</span>	<comment>/**</comment></p>
-<p id=205 class="line"><span>&nbsp;205</span><comment>	&nbsp;*&nbsp;**Generator**,&nbsp;yields&nbsp;consecutive&nbsp;column&nbsp;names&nbsp;as&nbsp;an&nbsp;</comment></p>
-<p id=206 class="line"><span>&nbsp;206</span><comment>	&nbsp;*&nbsp;{col,&nbsp;name}&nbsp;object.&nbsp;</comment></p>
-<p id=207 class="line"><span>&nbsp;207</span><comment>	&nbsp;*&nbsp;The&nbsp;generator&nbsp;exits&nbsp;when&nbsp;the&nbsp;first&nbsp;empty&nbsp;column&nbsp;name&nbsp;is&nbsp;encountered.</comment></p>
-<p id=208 class="line"><span>&nbsp;208</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;to&nbsp;scan</comment></p>
-<p id=209 class="line"><span>&nbsp;209</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;scan</comment></p>
-<p id=210 class="line"><span>&nbsp;210</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
-<p id=211 class="line"><span>&nbsp;211</span><comment>	&nbsp;*/</comment></p>
-<p id=212 class="line"><span>&nbsp;212</span>	private*&nbsp;getConsecutiveColumnNames(sheet:WorkSheet,&nbsp;row:number,&nbsp;startCol:string)&nbsp;{</p>
-<p id=213 class="line"><span>&nbsp;213</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;this.nextExcelColIndex(startCol))&nbsp;{</p>
-<p id=214 class="line"><span>&nbsp;214</span>			if&nbsp;(!this.getCellValue(sheet,&nbsp;col,&nbsp;row))&nbsp;{&nbsp;break;&nbsp;}</p>
-<p id=215 class="line"><span>&nbsp;215</span>			yield&nbsp;{col:col,&nbsp;name:this.getCellValue(sheet,&nbsp;col,&nbsp;row)};&nbsp;</p>
-<p id=216 class="line"><span>&nbsp;216</span>		}</p>
-<p id=217 class="line"><span>&nbsp;217</span>	}</p>
-<p id=218 class="line"><span>&nbsp;218</span></p>
-<p id=219 class="line"><span>&nbsp;219</span>	<comment>/**</comment></p>
-<p id=220 class="line"><span>&nbsp;220</span><comment>	&nbsp;*&nbsp;returns&nbsp;an&nbsp;array[c]&nbsp;of&nbsp;values&nbsp;from&nbsp;columns&nbsp;that&nbsp;match&nbsp;indices&nbsp;provided&nbsp;`columns`.</comment></p>
-<p id=221 class="line"><span>&nbsp;221</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
-<p id=222 class="line"><span>&nbsp;222</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over</comment></p>
-<p id=223 class="line"><span>&nbsp;223</span><comment>	&nbsp;*&nbsp;@param&nbsp;columns&nbsp;a)&nbsp;an&nbsp;array&nbsp;of&nbsp;column&nbsp;names.&nbsp;b)&nbsp;an&nbsp;{from:<quote>'A'</quote>,&nbsp;to:<quote>'Z'</quote>}&nbsp;object&nbsp;</comment></p>
-<p id=224 class="line"><span>&nbsp;224</span><comment>	&nbsp;*&nbsp;@return&nbsp;array&nbsp;of&nbsp;column&nbsp;values&nbsp;in&nbsp;the&nbsp;row</comment></p>
-<p id=225 class="line"><span>&nbsp;225</span><comment>	&nbsp;*/</comment></p>
-<p id=226 class="line"><span>&nbsp;226</span>	private&nbsp;getRow(sheet:WorkSheet,&nbsp;row:number,&nbsp;columns:string[])&nbsp;{</p>
-<p id=227 class="line"><span>&nbsp;227</span>		const&nbsp;result&nbsp;=&nbsp;[...this.getCellValues(sheet,&nbsp;row,&nbsp;columns)];</p>
-<p id=228 class="line"><span>&nbsp;228</span>		return&nbsp;result;</p>
-<p id=229 class="line"><span>&nbsp;229</span>	}</p>
-<p id=230 class="line"><span>&nbsp;230</span></p>
-<p id=231 class="line"><span>&nbsp;231</span>	<comment>/**</comment></p>
-<p id=232 class="line"><span>&nbsp;232</span><comment>	&nbsp;*&nbsp;returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
-<p id=233 class="line"><span>&nbsp;233</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetName&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
-<p id=234 class="line"><span>&nbsp;234</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;index&nbsp;(1,...)</comment></p>
-<p id=235 class="line"><span>&nbsp;235</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;it&nbsp;an&nbsp;iterator&nbsp;over&nbsp;columns</comment></p>
-<p id=236 class="line"><span>&nbsp;236</span><comment>	&nbsp;*&nbsp;@returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
-<p id=237 class="line"><span>&nbsp;237</span><comment>	&nbsp;*/</comment></p>
-<p id=238 class="line"><span>&nbsp;238</span>	private&nbsp;constructCol(sheetName:string,&nbsp;row:number,&nbsp;it:any):TableStruct&nbsp;{</p>
-<p id=239 class="line"><span>&nbsp;239</span>		const&nbsp;result:TableStruct&nbsp;=&nbsp;{</p>
-<p id=240 class="line"><span>&nbsp;240</span>			names:[],</p>
-<p id=241 class="line"><span>&nbsp;241</span>			sheetName:&nbsp;sheetName,</p>
-<p id=242 class="line"><span>&nbsp;242</span>			headerRow:&nbsp;row,</p>
-<p id=243 class="line"><span>&nbsp;243</span>			colIndex:&nbsp;&nbsp;<string[]>[]</p>
-<p id=244 class="line"><span>&nbsp;244</span>		};</p>
-<p id=245 class="line"><span>&nbsp;245</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;it)&nbsp;{</p>
-<p id=246 class="line"><span>&nbsp;246</span>			result.names.push(col.name);</p>
-<p id=247 class="line"><span>&nbsp;247</span>			result.colIndex.push(col.col);</p>
-<p id=248 class="line"><span>&nbsp;248</span>		}</p>
-<p id=249 class="line"><span>&nbsp;249</span>		return&nbsp;result;</p>
-<p id=250 class="line"><span>&nbsp;250</span>	}</p>
+<p id=72 class="line"><span>&nbsp;&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;get&nbsp;workbook()&nbsp;{&nbsp;return&nbsp;this.wb;&nbsp;}</p>
+<p id=73 class="line"><span>&nbsp;&nbsp;73</span></p>
+<p id=74 class="line"><span>&nbsp;&nbsp;74</span>	<comment>/**</comment></p>
+<p id=75 class="line"><span>&nbsp;&nbsp;75</span><comment>	&nbsp;*&nbsp;retrieves&nbsp;sheet&nbsp;names&nbsp;from&nbsp;a&nbsp;file</comment></p>
+<p id=76 class="line"><span>&nbsp;&nbsp;76</span><comment>	&nbsp;*&nbsp;@returns&nbsp;{[string]}&nbsp;an&nbsp;array&nbsp;of&nbsp;sheet&nbsp;names</comment></p>
+<p id=77 class="line"><span>&nbsp;&nbsp;77</span><comment>	&nbsp;*/</comment></p>
+<p id=78 class="line"><span>&nbsp;&nbsp;78</span>	public&nbsp;getSheetNames():string[]&nbsp;{</p>
+<p id=79 class="line"><span>&nbsp;&nbsp;79</span>		return&nbsp;this.wb.SheetNames;</p>
+<p id=80 class="line"><span>&nbsp;&nbsp;80</span>	}</p>
+<p id=81 class="line"><span>&nbsp;&nbsp;81</span></p>
+<p id=82 class="line"><span>&nbsp;&nbsp;82</span>	<comment>/**</comment></p>
+<p id=83 class="line"><span>&nbsp;&nbsp;83</span><comment>	&nbsp;*&nbsp;getTableColumns&nbsp;retrieves&nbsp;an&nbsp;array&nbsp;of&nbsp;consecutive&nbsp;valid&nbsp;column&nbsp;names.</comment></p>
+<p id=84 class="line"><span>&nbsp;&nbsp;84</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetName&nbsp;the&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from</comment></p>
+<p id=85 class="line"><span>&nbsp;&nbsp;85</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;the&nbsp;first&nbsp;column&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote>.</comment></p>
+<p id=86 class="line"><span>&nbsp;&nbsp;86</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over;&nbsp;defaults&nbsp;to&nbsp;1.</comment></p>
+<p id=87 class="line"><span>&nbsp;&nbsp;87</span><comment>	&nbsp;*&nbsp;@returns&nbsp;an&nbsp;excel&nbsp;table&nbsp;description</comment></p>
+<p id=88 class="line"><span>&nbsp;&nbsp;88</span><comment>	&nbsp;*/</comment></p>
+<p id=89 class="line"><span>&nbsp;&nbsp;89</span>	public&nbsp;getTableColumns(sheetName:string,&nbsp;startCol=<quote>'A'</quote>,&nbsp;row=1):TableStruct&nbsp;{</p>
+<p id=90 class="line"><span>&nbsp;&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sheet:WorkSheet&nbsp;=&nbsp;this.wb.Sheets[sheetName];</p>
+<p id=91 class="line"><span>&nbsp;&nbsp;91</span>		return&nbsp;this.constructCol(sheetName,&nbsp;row,&nbsp;this.getConsecutiveColumnNames(sheet,&nbsp;row,&nbsp;startCol));</p>
+<p id=92 class="line"><span>&nbsp;&nbsp;92</span>	}</p>
+<p id=93 class="line"><span>&nbsp;&nbsp;93</span>	</p>
+<p id=94 class="line"><span>&nbsp;&nbsp;94</span>	<comment>/**</comment></p>
+<p id=95 class="line"><span>&nbsp;&nbsp;95</span><comment>	&nbsp;*&nbsp;getRowsForTable&nbsp;returns&nbsp;a&nbsp;2D&nbsp;array[r][c]&nbsp;of&nbsp;row&nbsp;values,&nbsp;where&nbsp;the&nbsp;columns&nbsp;match&nbsp;the&nbsp;provided&nbsp;</comment></p>
+<p id=96 class="line"><span>&nbsp;&nbsp;96</span><comment>	&nbsp;*&nbsp;columns&nbsp;names.&nbsp;</comment></p>
+<p id=97 class="line"><span>&nbsp;&nbsp;97</span><comment>	&nbsp;*&nbsp;@param&nbsp;table&nbsp;an&nbsp;array&nbsp;of&nbsp;column&nbsp;descriptors.&nbsp;</comment></p>
+<p id=98 class="line"><span>&nbsp;&nbsp;98</span><comment>	&nbsp;*&nbsp;@param&nbsp;maxRows&nbsp;if&nbsp;specified,&nbsp;determines&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;rows&nbsp;to&nbsp;scan&nbsp;for.&nbsp;</comment></p>
+<p id=99 class="line"><span>&nbsp;&nbsp;99</span><comment>	&nbsp;*&nbsp;If&nbsp;omitted,&nbsp;iteration&nbsp;stops&nbsp;when&nbsp;the&nbsp;first&nbsp;row&nbsp;of&nbsp;empty&nbsp;values&nbsp;is&nbsp;encountered.</comment></p>
+<p id=100 class="line"><span>&nbsp;100</span><comment>	&nbsp;*/</comment></p>
+<p id=101 class="line"><span>&nbsp;101</span>	public&nbsp;getRowsForTable(table:TableStruct,&nbsp;maxRows=0):DataRow[]&nbsp;{</p>
+<p id=102 class="line"><span>&nbsp;102</span>		if&nbsp;(!table.sheetName)&nbsp;{&nbsp;throw&nbsp;new&nbsp;Error(<quote>'illegal&nbsp;table&nbsp;parameter&nbsp;in&nbsp;getRowsForTable'</quote>);&nbsp;}</p>
+<p id=103 class="line"><span>&nbsp;103</span>		const&nbsp;sheet:WorkSheet&nbsp;=&nbsp;this.wb.Sheets[table.sheetName];</p>
+<p id=104 class="line"><span>&nbsp;104</span>		const&nbsp;result:DataRow[]&nbsp;=&nbsp;[];</p>
+<p id=105 class="line"><span>&nbsp;105</span>		let&nbsp;row=0;&nbsp;</p>
+<p id=106 class="line"><span>&nbsp;106</span>		while&nbsp;(true)&nbsp;{</p>
+<p id=107 class="line"><span>&nbsp;107</span>			let&nbsp;newRow&nbsp;=&nbsp;this.getRow(sheet,&nbsp;row+table.headerRow+1,&nbsp;table.colIndex);</p>
+<p id=108 class="line"><span>&nbsp;108</span>			let&nbsp;filledCells&nbsp;=&nbsp;0;</p>
+<p id=109 class="line"><span>&nbsp;109</span>			for&nbsp;(let&nbsp;c&nbsp;in&nbsp;newRow)&nbsp;{&nbsp;if&nbsp;(newRow[c])&nbsp;{&nbsp;filledCells++;&nbsp;}}</p>
+<p id=110 class="line"><span>&nbsp;110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row++;</p>
+<p id=111 class="line"><span>&nbsp;111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;only&nbsp;return&nbsp;non-empty&nbsp;rows</comment></p>
+<p id=112 class="line"><span>&nbsp;112</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(filledCells&nbsp;>&nbsp;0)&nbsp;{&nbsp;result.push(newRow);&nbsp;}</p>
+<p id=113 class="line"><span>&nbsp;113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;no&nbsp;maxRows&nbsp;specified:&nbsp;break&nbsp;upon&nbsp;first&nbsp;empty&nbsp;row</comment></p>
+<p id=114 class="line"><span>&nbsp;114</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(maxRows<=0)&nbsp;{&nbsp;&nbsp;break;&nbsp;}</p>
+<p id=115 class="line"><span>&nbsp;115</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;rows&nbsp;exceed&nbsp;maxRows:&nbsp;break;</comment></p>
+<p id=116 class="line"><span>&nbsp;116</span><comment></comment>			if&nbsp;(maxRows>0&nbsp;&&&nbsp;row>=maxRows)&nbsp;{&nbsp;break;&nbsp;}</p>
+<p id=117 class="line"><span>&nbsp;117</span>		}</p>
+<p id=118 class="line"><span>&nbsp;118</span>		return&nbsp;result;</p>
+<p id=119 class="line"><span>&nbsp;119</span>	}</p>
+<p id=120 class="line"><span>&nbsp;120</span>	</p>
+<p id=121 class="line"><span>&nbsp;121</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>/**</comment></p>
+<p id=122 class="line"><span>&nbsp;122</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;**generator**&nbsp;for&nbsp;Excel&nbsp;column&nbsp;indices&nbsp;starting&nbsp;at&nbsp;startCol.&nbsp;</comment></p>
+<p id=123 class="line"><span>&nbsp;123</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Following&nbsp;<quote>'Z'</quote>&nbsp;the&nbsp;next&nbsp;column&nbsp;generated&nbsp;is&nbsp;<quote>'AA'</quote>&nbsp;and&nbsp;so&nbsp;on.&nbsp;The&nbsp;generator&nbsp;</comment></p>
+<p id=124 class="line"><span>&nbsp;124</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;starts&nbsp;with&nbsp;producing&nbsp;startCol&nbsp;as&nbsp;first&nbsp;index.</comment></p>
+<p id=125 class="line"><span>&nbsp;125</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;#&nbsp;Usage</comment></p>
+<p id=126 class="line"><span>&nbsp;126</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
+<p id=127 class="line"><span>&nbsp;127</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;for&nbsp;(col&nbsp;of&nbsp;file.nextExcelColIndex(startCol=<quote>'Y'</quote>)&nbsp;{&nbsp;</comment></p>
+<p id=128 class="line"><span>&nbsp;128</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;printf(<quote>"%s,&nbsp;"</quote>,&nbsp;col);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;->&nbsp;Y,&nbsp;Z,&nbsp;AA,&nbsp;AB</comment></comment></p>
+<p id=129 class="line"><span>&nbsp;129</span><comment><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(col&nbsp;===&nbsp;<quote>'AB'</quote>)&nbsp;&nbsp;{&nbsp;break;&nbsp;}</comment></p>
+<p id=130 class="line"><span>&nbsp;130</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;}</comment></p>
+<p id=131 class="line"><span>&nbsp;131</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
+<p id=132 class="line"><span>&nbsp;132</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;the&nbsp;first&nbsp;column&nbsp;index&nbsp;(<quote>'A'</quote>,&nbsp;....)&nbsp;to&nbsp;yield;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
+<p id=133 class="line"><span>&nbsp;133</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</comment></p>
+<p id=134 class="line"><span>&nbsp;134</span>&nbsp;&nbsp;&nbsp;&nbsp;public*&nbsp;nextExcelColIndex(startCol=<quote>'A'</quote>):IterableIterator<string>&nbsp;{</p>
+<p id=135 class="line"><span>&nbsp;135</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;nextChar(c:string):string&nbsp;{&nbsp;return&nbsp;String.fromCharCode(c.charCodeAt(0)&nbsp;+&nbsp;1);&nbsp;}</p>
+<p id=136 class="line"><span>&nbsp;136</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p id=137 class="line"><span>&nbsp;137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;c&nbsp;=&nbsp;startCol;</p>
+<p id=138 class="line"><span>&nbsp;138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{</p>
+<p id=139 class="line"><span>&nbsp;139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;c;</p>
+<p id=140 class="line"><span>&nbsp;140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c.length&nbsp;===&nbsp;1)&nbsp;{</p>
+<p id=141 class="line"><span>&nbsp;141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(c&nbsp;<&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])&nbsp;:&nbsp;<quote>'AA'</quote>;</p>
+<p id=142 class="line"><span>&nbsp;142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</p>
+<p id=143 class="line"><span>&nbsp;143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ch&nbsp;=&nbsp;nextChar(c[1]);</p>
+<p id=144 class="line"><span>&nbsp;144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(ch&nbsp;>&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])+<quote>'A'</quote>&nbsp;:&nbsp;c[0]&nbsp;+&nbsp;ch;</p>
+<p id=145 class="line"><span>&nbsp;145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p id=146 class="line"><span>&nbsp;146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p id=147 class="line"><span>&nbsp;147</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p id=148 class="line"><span>&nbsp;148</span></p>
+<p id=149 class="line"><span>&nbsp;149</span>	<comment>/**</comment></p>
+<p id=150 class="line"><span>&nbsp;150</span><comment>	&nbsp;*&nbsp;gets&nbsp;a&nbsp;table&nbsp;of&nbsp;values,&nbsp;starting&nbsp;at&nbsp;the&nbsp;startCol&nbsp;and&nbsp;startRow.</comment></p>
+<p id=151 class="line"><span>&nbsp;151</span><comment>	&nbsp;*&nbsp;The&nbsp;table&nbsp;includes&nbsp;all&nbsp;consecutive&nbsp;columns&nbsp;with&nbsp;valid&nbsp;names,&nbsp;and&nbsp;all&nbsp;consecutive</comment></p>
+<p id=152 class="line"><span>&nbsp;152</span><comment>	&nbsp;*&nbsp;rows&nbsp;with&nbsp;at&nbsp;least&nbsp;one&nbsp;valid&nbsp;cell&nbsp;value.</comment></p>
+<p id=153 class="line"><span>&nbsp;153</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetID&nbsp;the&nbsp;sheet&nbsp;name&nbsp;or&nbsp;index&nbsp;from&nbsp;which&nbsp;to&nbsp;get&nbsp;the&nbsp;table</comment></p>
+<p id=154 class="line"><span>&nbsp;154</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;determines&nbsp;the&nbsp;left&nbsp;edge&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
+<p id=155 class="line"><span>&nbsp;155</span><comment>	&nbsp;*&nbsp;@param&nbsp;startRow&nbsp;determines&nbsp;the&nbsp;top&nbsp;edge&nbsp;of&nbsp;the&nbsp;table;&nbsp;defaults&nbsp;to&nbsp;1</comment></p>
+<p id=156 class="line"><span>&nbsp;156</span><comment>	&nbsp;*&nbsp;@returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;{columns,&nbsp;table}&nbsp;</comment></p>
+<p id=157 class="line"><span>&nbsp;157</span><comment>	&nbsp;*/</comment></p>
+<p id=158 class="line"><span>&nbsp;158</span>	public&nbsp;getTable(sheetID:string|number,&nbsp;startCol=<quote>'A'</quote>,&nbsp;startRow=1)&nbsp;{</p>
+<p id=159 class="line"><span>&nbsp;159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sheetName&nbsp;=&nbsp;(typeof&nbsp;sheetID&nbsp;===&nbsp;<quote>'string'</quote>)?&nbsp;sheetID&nbsp;:&nbsp;this.getSheetNames()[sheetID];</p>
+<p id=160 class="line"><span>&nbsp;160</span>		const&nbsp;columns:TableStruct&nbsp;=&nbsp;this.getTableColumns(sheetName,&nbsp;startCol,&nbsp;startRow);</p>
+<p id=161 class="line"><span>&nbsp;161</span>		const&nbsp;table:DataRow[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;this.getRowsForTable(columns);</p>
+<p id=162 class="line"><span>&nbsp;162</span>		return&nbsp;{columns,&nbsp;table};</p>
+<p id=163 class="line"><span>&nbsp;163</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p id=164 class="line"><span>&nbsp;164</span></p>
+<p id=165 class="line"><span>&nbsp;165</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>/**</comment></p>
+<p id=166 class="line"><span>&nbsp;166</span><comment>	&nbsp;*&nbsp;returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
+<p id=167 class="line"><span>&nbsp;167</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
+<p id=168 class="line"><span>&nbsp;168</span><comment>	&nbsp;*&nbsp;@param&nbsp;col&nbsp;the&nbsp;column&nbsp;index&nbsp;(<quote>'A'</quote>,...)</comment></p>
+<p id=169 class="line"><span>&nbsp;169</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;index&nbsp;(1,...)</comment></p>
+<p id=170 class="line"><span>&nbsp;170</span><comment>	&nbsp;*&nbsp;@returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
+<p id=171 class="line"><span>&nbsp;171</span><comment>	&nbsp;*/</comment></p>
+<p id=172 class="line"><span>&nbsp;172</span>	public&nbsp;getCellValue(sheet:string|WorkSheet,&nbsp;col:string,&nbsp;row:number):string&nbsp;{</p>
+<p id=173 class="line"><span>&nbsp;173</span>		if&nbsp;(typeof&nbsp;sheet&nbsp;===&nbsp;<quote>'string'</quote>)&nbsp;{&nbsp;sheet&nbsp;=&nbsp;this.wb.Sheets[sheet];&nbsp;}&nbsp;</p>
+<p id=174 class="line"><span>&nbsp;174</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;c:CellObject;</p>
+<p id=175 class="line"><span>&nbsp;175</span>		if&nbsp;(sheet[col+row]&nbsp;&&&nbsp;sheet[col+row].v!==<quote>''</quote>)&nbsp;{&nbsp;</p>
+<p id=176 class="line"><span>&nbsp;176</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;sheet[col+row];</p>
+<p id=177 class="line"><span>&nbsp;177</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;val&nbsp;=&nbsp;c.w!==undefined?&nbsp;c.w&nbsp;:&nbsp;c.v;</p>
+<p id=178 class="line"><span>&nbsp;178</span>			if&nbsp;(c)&nbsp;{&nbsp;switch(c.t)&nbsp;{</p>
+<p id=179 class="line"><span>&nbsp;179</span>				case&nbsp;<quote>'s'</quote>:&nbsp;return&nbsp;(<string>val).replace(/,/g,<quote>';'</quote>).replace(/[\n\r]+/g,<quote>'&nbsp;'</quote>).trim();</p>
+<p id=180 class="line"><span>&nbsp;180</span>				case&nbsp;<quote>'n'</quote>:&nbsp;<comment>/*&nbsp;falls&nbsp;through&nbsp;*/</comment>&nbsp;</p>
+<p id=181 class="line"><span>&nbsp;181</span>				default:&nbsp;return&nbsp;c.w.replace(/,/g,<quote>''</quote>);</p>
+<p id=182 class="line"><span>&nbsp;182</span>			}}</p>
+<p id=183 class="line"><span>&nbsp;183</span>		}</p>
+<p id=184 class="line"><span>&nbsp;184</span>		return&nbsp;<quote>''</quote>;&nbsp;</p>
+<p id=185 class="line"><span>&nbsp;185</span>	}</p>
+<p id=186 class="line"><span>&nbsp;186</span></p>
+<p id=187 class="line"><span>&nbsp;187</span>&nbsp;&nbsp;&nbsp;&nbsp;<comment>//-----------&nbsp;private&nbsp;methods&nbsp;------------------</comment></p>
+<p id=188 class="line"><span>&nbsp;188</span><comment></comment>		</p>
+<p id=189 class="line"><span>&nbsp;189</span>	<comment>/**</comment></p>
+<p id=190 class="line"><span>&nbsp;190</span><comment>	&nbsp;*&nbsp;**Generator**,&nbsp;yields&nbsp;consecutive&nbsp;cell&nbsp;values&nbsp;over&nbsp;a&nbsp;row</comment></p>
+<p id=191 class="line"><span>&nbsp;191</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
+<p id=192 class="line"><span>&nbsp;192</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over</comment></p>
+<p id=193 class="line"><span>&nbsp;193</span><comment>	&nbsp;*&nbsp;@param&nbsp;colIterator&nbsp;iterable&nbsp;over&nbsp;columns;</comment></p>
+<p id=194 class="line"><span>&nbsp;194</span><comment>	&nbsp;*&nbsp;or&nbsp;an&nbsp;iterable&nbsp;that&nbsp;generates&nbsp;column&nbsp;indices.</comment></p>
+<p id=195 class="line"><span>&nbsp;195</span><comment>	&nbsp;*/</comment></p>
+<p id=196 class="line"><span>&nbsp;196</span>	private*&nbsp;getCellValues(sheet:WorkSheet,&nbsp;row:number,&nbsp;colIterator:string[])&nbsp;{</p>
+<p id=197 class="line"><span>&nbsp;197</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;colIterator)&nbsp;{</p>
+<p id=198 class="line"><span>&nbsp;198</span>			yield&nbsp;this.getCellValue(sheet,&nbsp;col,&nbsp;row);&nbsp;</p>
+<p id=199 class="line"><span>&nbsp;199</span>		}</p>
+<p id=200 class="line"><span>&nbsp;200</span>	}</p>
+<p id=201 class="line"><span>&nbsp;201</span>	</p>
+<p id=202 class="line"><span>&nbsp;202</span>	<comment>/**</comment></p>
+<p id=203 class="line"><span>&nbsp;203</span><comment>	&nbsp;*&nbsp;**Generator**,&nbsp;yields&nbsp;consecutive&nbsp;column&nbsp;names&nbsp;as&nbsp;an&nbsp;</comment></p>
+<p id=204 class="line"><span>&nbsp;204</span><comment>	&nbsp;*&nbsp;{col,&nbsp;name}&nbsp;object.&nbsp;</comment></p>
+<p id=205 class="line"><span>&nbsp;205</span><comment>	&nbsp;*&nbsp;The&nbsp;generator&nbsp;exits&nbsp;when&nbsp;the&nbsp;first&nbsp;empty&nbsp;column&nbsp;name&nbsp;is&nbsp;encountered.</comment></p>
+<p id=206 class="line"><span>&nbsp;206</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;to&nbsp;scan</comment></p>
+<p id=207 class="line"><span>&nbsp;207</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;scan</comment></p>
+<p id=208 class="line"><span>&nbsp;208</span><comment>	&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
+<p id=209 class="line"><span>&nbsp;209</span><comment>	&nbsp;*/</comment></p>
+<p id=210 class="line"><span>&nbsp;210</span>	private*&nbsp;getConsecutiveColumnNames(sheet:WorkSheet,&nbsp;row:number,&nbsp;startCol:string)&nbsp;{</p>
+<p id=211 class="line"><span>&nbsp;211</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;this.nextExcelColIndex(startCol))&nbsp;{</p>
+<p id=212 class="line"><span>&nbsp;212</span>			if&nbsp;(!this.getCellValue(sheet,&nbsp;col,&nbsp;row))&nbsp;{&nbsp;break;&nbsp;}</p>
+<p id=213 class="line"><span>&nbsp;213</span>			yield&nbsp;{col:col,&nbsp;name:this.getCellValue(sheet,&nbsp;col,&nbsp;row)};&nbsp;</p>
+<p id=214 class="line"><span>&nbsp;214</span>		}</p>
+<p id=215 class="line"><span>&nbsp;215</span>	}</p>
+<p id=216 class="line"><span>&nbsp;216</span></p>
+<p id=217 class="line"><span>&nbsp;217</span>	<comment>/**</comment></p>
+<p id=218 class="line"><span>&nbsp;218</span><comment>	&nbsp;*&nbsp;returns&nbsp;an&nbsp;array[c]&nbsp;of&nbsp;values&nbsp;from&nbsp;columns&nbsp;that&nbsp;match&nbsp;indices&nbsp;provided&nbsp;`columns`.</comment></p>
+<p id=219 class="line"><span>&nbsp;219</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheet&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
+<p id=220 class="line"><span>&nbsp;220</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;the&nbsp;row&nbsp;to&nbsp;iterate&nbsp;over</comment></p>
+<p id=221 class="line"><span>&nbsp;221</span><comment>	&nbsp;*&nbsp;@param&nbsp;columns&nbsp;a)&nbsp;an&nbsp;array&nbsp;of&nbsp;column&nbsp;names.&nbsp;b)&nbsp;an&nbsp;{from:<quote>'A'</quote>,&nbsp;to:<quote>'Z'</quote>}&nbsp;object&nbsp;</comment></p>
+<p id=222 class="line"><span>&nbsp;222</span><comment>	&nbsp;*&nbsp;@return&nbsp;array&nbsp;of&nbsp;column&nbsp;values&nbsp;in&nbsp;the&nbsp;row</comment></p>
+<p id=223 class="line"><span>&nbsp;223</span><comment>	&nbsp;*/</comment></p>
+<p id=224 class="line"><span>&nbsp;224</span>	private&nbsp;getRow(sheet:WorkSheet,&nbsp;row:number,&nbsp;columns:string[])&nbsp;{</p>
+<p id=225 class="line"><span>&nbsp;225</span>		const&nbsp;result&nbsp;=&nbsp;[...this.getCellValues(sheet,&nbsp;row,&nbsp;columns)];</p>
+<p id=226 class="line"><span>&nbsp;226</span>		return&nbsp;result;</p>
+<p id=227 class="line"><span>&nbsp;227</span>	}</p>
+<p id=228 class="line"><span>&nbsp;228</span></p>
+<p id=229 class="line"><span>&nbsp;229</span>	<comment>/**</comment></p>
+<p id=230 class="line"><span>&nbsp;230</span><comment>	&nbsp;*&nbsp;returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
+<p id=231 class="line"><span>&nbsp;231</span><comment>	&nbsp;*&nbsp;@param&nbsp;sheetName&nbsp;the&nbsp;sheet&nbsp;object&nbsp;or&nbsp;sheet&nbsp;name&nbsp;to&nbsp;retrieve&nbsp;cells&nbsp;from;</comment></p>
+<p id=232 class="line"><span>&nbsp;232</span><comment>	&nbsp;*&nbsp;@param&nbsp;row&nbsp;index&nbsp;(1,...)</comment></p>
+<p id=233 class="line"><span>&nbsp;233</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;it&nbsp;an&nbsp;iterator&nbsp;over&nbsp;columns</comment></p>
+<p id=234 class="line"><span>&nbsp;234</span><comment>	&nbsp;*&nbsp;@returns&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;cell,&nbsp;or&nbsp;undefined</comment></p>
+<p id=235 class="line"><span>&nbsp;235</span><comment>	&nbsp;*/</comment></p>
+<p id=236 class="line"><span>&nbsp;236</span>	private&nbsp;constructCol(sheetName:string,&nbsp;row:number,&nbsp;it:any):TableStruct&nbsp;{</p>
+<p id=237 class="line"><span>&nbsp;237</span>		const&nbsp;result:TableStruct&nbsp;=&nbsp;{</p>
+<p id=238 class="line"><span>&nbsp;238</span>			names:[],</p>
+<p id=239 class="line"><span>&nbsp;239</span>			sheetName:&nbsp;sheetName,</p>
+<p id=240 class="line"><span>&nbsp;240</span>			headerRow:&nbsp;row,</p>
+<p id=241 class="line"><span>&nbsp;241</span>			colIndex:&nbsp;&nbsp;<string[]>[]</p>
+<p id=242 class="line"><span>&nbsp;242</span>		};</p>
+<p id=243 class="line"><span>&nbsp;243</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;it)&nbsp;{</p>
+<p id=244 class="line"><span>&nbsp;244</span>			result.names.push(col.name);</p>
+<p id=245 class="line"><span>&nbsp;245</span>			result.colIndex.push(col.col);</p>
+<p id=246 class="line"><span>&nbsp;246</span>		}</p>
+<p id=247 class="line"><span>&nbsp;247</span>		return&nbsp;result;</p>
+<p id=248 class="line"><span>&nbsp;248</span>	}</p>
+<p id=249 class="line"><span>&nbsp;249</span></p>
+<p id=250 class="line"><span>&nbsp;250</span>}</p>
 <p id=251 class="line"><span>&nbsp;251</span></p>
-<p id=252 class="line"><span>&nbsp;252</span>}</p>
-<p id=253 class="line"><span>&nbsp;253</span></p>
-<p id=254 class="line"><span>&nbsp;254</span></p></code></div>
+<p id=252 class="line"><span>&nbsp;252</span></p></code></div>
                 </body>
             
