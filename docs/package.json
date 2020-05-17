@@ -44,7 +44,7 @@
     "coveralls": "^3.0.9",
     "grunt-coveralls": "^2.0.0",
     "jest": "^25.5.x",
-    "ts-jest": "^25.4.x",
+    "ts-jest": "25.5.x",
     "tslint": "^6.1.x",
     "typedoc": "^0.17.6",
     "typescript": "^3.8.3",
