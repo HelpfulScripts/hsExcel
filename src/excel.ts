@@ -62,11 +62,21 @@ export interface ExcelFile {
  * @param name the name of the Excel file to read
  * @returns an object of functions providing access to the contents of the excel file.
  */
-export class File implements ExcelFile { 
+export class Excel implements ExcelFile { 
 	private wb:WorkBook;
 
-    constructor(name:string, options?:any) {
+    constructor(name?:string, options?:any) {
+        if (name!==undefined) {
+            this.readFile(name, options);
+        }
+    }
+     
+    public readFile(name:string, options?:any) {
         this.wb = XLSX.readFile(name, options);
+    }
+
+    public readData(name:any, options?:any) {
+        this.wb = XLSX.read(name, options);
     }
 
     public get workbook() { return this.wb; }

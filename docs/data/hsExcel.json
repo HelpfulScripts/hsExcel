@@ -19,7 +19,7 @@
 			"children": [
 				{
 					"id": 41,
-					"name": "File",
+					"name": "Excel",
 					"kind": 128,
 					"kindString": "Class",
 					"flags": {
@@ -51,17 +51,22 @@
 							"signatures": [
 								{
 									"id": 44,
-									"name": "new File",
+									"name": "new Excel",
 									"kind": 16384,
 									"kindString": "Constructor signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"parameters": [
 										{
 											"id": 45,
 											"name": "name",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
 											"type": {
 												"type": "intrinsic",
 												"name": "string"
@@ -73,6 +78,7 @@
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
+												"isExported": true,
 												"isOptional": true
 											},
 											"type": {
@@ -83,8 +89,8 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "File",
-										"id": 41
+										"id": 41,
+										"name": "Excel"
 									}
 								}
 							],
@@ -118,7 +124,7 @@
 							}
 						},
 						{
-							"id": 47,
+							"id": 55,
 							"name": "workbook",
 							"kind": 262144,
 							"kindString": "Accessor",
@@ -128,11 +134,13 @@
 							},
 							"getSignature": [
 								{
-									"id": 48,
+									"id": 56,
 									"name": "__get",
 									"kind": 524288,
 									"kindString": "Get signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"type": {
 										"type": "reference",
 										"name": "WorkBook"
@@ -142,13 +150,13 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 72,
+									"line": 82,
 									"character": 23
 								}
 							]
 						},
 						{
-							"id": 94,
+							"id": 102,
 							"name": "constructCol",
 							"kind": 2048,
 							"kindString": "Method",
@@ -158,22 +166,26 @@
 							},
 							"signatures": [
 								{
-									"id": 95,
+									"id": 103,
 									"name": "constructCol",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "returns the value of a cell, or undefined",
 										"returns": "the value of a cell, or undefined\n"
 									},
 									"parameters": [
 										{
-											"id": 96,
+											"id": 104,
 											"name": "sheetName",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet object or sheet name to retrieve cells from;"
 											},
@@ -183,11 +195,13 @@
 											}
 										},
 										{
-											"id": 97,
+											"id": 105,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "index (1,...)"
 											},
@@ -197,11 +211,13 @@
 											}
 										},
 										{
-											"id": 98,
+											"id": 106,
 											"name": "it",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "an iterator over columns"
 											},
@@ -213,21 +229,21 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "TableStruct",
-										"id": 2
+										"id": 2,
+										"name": "TableStruct"
 									}
 								}
 							],
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 236,
+									"line": 246,
 									"character": 21
 								}
 							]
 						},
 						{
-							"id": 71,
+							"id": 79,
 							"name": "getCellValue",
 							"kind": 2048,
 							"kindString": "Method",
@@ -237,22 +253,26 @@
 							},
 							"signatures": [
 								{
-									"id": 72,
+									"id": 80,
 									"name": "getCellValue",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "returns the value of a cell, or undefined",
 										"returns": "the value of a cell, or undefined\n"
 									},
 									"parameters": [
 										{
-											"id": 73,
+											"id": 81,
 											"name": "sheet",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet object or sheet name to retrieve cells from;"
 											},
@@ -271,11 +291,13 @@
 											}
 										},
 										{
-											"id": 74,
+											"id": 82,
 											"name": "col",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the column index ('A',...)"
 											},
@@ -285,11 +307,13 @@
 											}
 										},
 										{
-											"id": 75,
+											"id": 83,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "index (1,...)"
 											},
@@ -308,18 +332,18 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 172,
+									"line": 182,
 									"character": 20
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.getCellValue",
-								"id": 35
+								"id": 35,
+								"name": "ExcelFile.getCellValue"
 							}
 						},
 						{
-							"id": 76,
+							"id": 84,
 							"name": "getCellValues",
 							"kind": 2048,
 							"kindString": "Method",
@@ -329,21 +353,25 @@
 							},
 							"signatures": [
 								{
-									"id": 77,
+									"id": 85,
 									"name": "getCellValues",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "**Generator**, yields consecutive cell values over a row"
 									},
 									"parameters": [
 										{
-											"id": 78,
+											"id": 86,
 											"name": "sheet",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet object or sheet name to retrieve cells from;"
 											},
@@ -353,11 +381,13 @@
 											}
 										},
 										{
-											"id": 79,
+											"id": 87,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the row to iterate over"
 											},
@@ -367,11 +397,13 @@
 											}
 										},
 										{
-											"id": 80,
+											"id": 88,
 											"name": "colIterator",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "iterable over columns;\nor an iterable that generates column indices.\n"
 											},
@@ -386,7 +418,6 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "Generator",
 										"typeArguments": [
 											{
 												"type": "intrinsic",
@@ -400,20 +431,21 @@
 												"type": "intrinsic",
 												"name": "unknown"
 											}
-										]
+										],
+										"name": "Generator"
 									}
 								}
 							],
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 196,
+									"line": 206,
 									"character": 23
 								}
 							]
 						},
 						{
-							"id": 81,
+							"id": 89,
 							"name": "getConsecutiveColumnNames",
 							"kind": 2048,
 							"kindString": "Method",
@@ -423,21 +455,25 @@
 							},
 							"signatures": [
 								{
-									"id": 82,
+									"id": 90,
 									"name": "getConsecutiveColumnNames",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "**Generator**, yields consecutive column names as an\n{col, name} object.\nThe generator exits when the first empty column name is encountered."
 									},
 									"parameters": [
 										{
-											"id": 83,
+											"id": 91,
 											"name": "sheet",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet to scan"
 											},
@@ -447,11 +483,13 @@
 											}
 										},
 										{
-											"id": 84,
+											"id": 92,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the row to scan"
 											},
@@ -461,11 +499,13 @@
 											}
 										},
 										{
-											"id": 85,
+											"id": 93,
 											"name": "startCol",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "defaults to 'A'\n"
 											},
@@ -477,27 +517,30 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "Generator",
 										"typeArguments": [
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 86,
+													"id": 94,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"children": [
 														{
-															"id": 87,
+															"id": 95,
 															"name": "col",
 															"kind": 32,
 															"kindString": "Variable",
-															"flags": {},
+															"flags": {
+																"isExported": true
+															},
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 213,
+																	"line": 223,
 																	"character": 13
 																}
 															],
@@ -508,15 +551,17 @@
 															"defaultValue": "col"
 														},
 														{
-															"id": 88,
+															"id": 96,
 															"name": "name",
 															"kind": 32,
 															"kindString": "Variable",
-															"flags": {},
+															"flags": {
+																"isExported": true
+															},
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 213,
+																	"line": 223,
 																	"character": 23
 																}
 															],
@@ -532,8 +577,8 @@
 															"title": "Variables",
 															"kind": 32,
 															"children": [
-																87,
-																88
+																95,
+																96
 															]
 														}
 													]
@@ -547,20 +592,21 @@
 												"type": "intrinsic",
 												"name": "unknown"
 											}
-										]
+										],
+										"name": "Generator"
 									}
 								}
 							],
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 210,
+									"line": 220,
 									"character": 35
 								}
 							]
 						},
 						{
-							"id": 89,
+							"id": 97,
 							"name": "getRow",
 							"kind": 2048,
 							"kindString": "Method",
@@ -570,22 +616,26 @@
 							},
 							"signatures": [
 								{
-									"id": 90,
+									"id": 98,
 									"name": "getRow",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "returns an array[c] of values from columns that match indices provided `columns`.",
 										"returns": "array of column values in the row\n"
 									},
 									"parameters": [
 										{
-											"id": 91,
+											"id": 99,
 											"name": "sheet",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet object or sheet name to retrieve cells from;"
 											},
@@ -595,11 +645,13 @@
 											}
 										},
 										{
-											"id": 92,
+											"id": 100,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the row to iterate over"
 											},
@@ -609,11 +661,13 @@
 											}
 										},
 										{
-											"id": 93,
+											"id": 101,
 											"name": "columns",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "a) an array of column names. b) an {from:'A', to:'Z'} object"
 											},
@@ -638,13 +692,13 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 224,
+									"line": 234,
 									"character": 15
 								}
 							]
 						},
 						{
-							"id": 56,
+							"id": 64,
 							"name": "getRowsForTable",
 							"kind": 2048,
 							"kindString": "Method",
@@ -654,36 +708,42 @@
 							},
 							"signatures": [
 								{
-									"id": 57,
+									"id": 65,
 									"name": "getRowsForTable",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "getRowsForTable returns a 2D array[r][c] of row values, where the columns match the provided\ncolumns names."
 									},
 									"parameters": [
 										{
-											"id": 58,
+											"id": 66,
 											"name": "table",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "an array of column descriptors."
 											},
 											"type": {
 												"type": "reference",
-												"name": "TableStruct",
-												"id": 2
+												"id": 2,
+												"name": "TableStruct"
 											}
 										},
 										{
-											"id": 59,
+											"id": 67,
 											"name": "maxRows",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "if specified, determines the maximum number of rows to scan for.\nIf omitted, iteration stops when the first row of empty values is encountered.\n"
 											},
@@ -706,18 +766,18 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 101,
+									"line": 111,
 									"character": 23
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.getRowsForTable",
-								"id": 20
+								"id": 20,
+								"name": "ExcelFile.getRowsForTable"
 							}
 						},
 						{
-							"id": 49,
+							"id": 57,
 							"name": "getSheetNames",
 							"kind": 2048,
 							"kindString": "Method",
@@ -727,11 +787,13 @@
 							},
 							"signatures": [
 								{
-									"id": 50,
+									"id": 58,
 									"name": "getSheetNames",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "retrieves sheet names from a file",
 										"returns": "an array of sheet names\n"
@@ -748,18 +810,18 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 78,
+									"line": 88,
 									"character": 21
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.getSheetNames",
-								"id": 11
+								"id": 11,
+								"name": "ExcelFile.getSheetNames"
 							}
 						},
 						{
-							"id": 63,
+							"id": 71,
 							"name": "getTable",
 							"kind": 2048,
 							"kindString": "Method",
@@ -769,22 +831,26 @@
 							},
 							"signatures": [
 								{
-									"id": 64,
+									"id": 72,
 									"name": "getTable",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "gets a table of values, starting at the startCol and startRow.\nThe table includes all consecutive columns with valid names, and all consecutive\nrows with at least one valid cell value.",
 										"returns": "a tuple of {columns, table}\n"
 									},
 									"parameters": [
 										{
-											"id": 65,
+											"id": 73,
 											"name": "sheetID",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet name or index from which to get the table"
 											},
@@ -803,11 +869,13 @@
 											}
 										},
 										{
-											"id": 66,
+											"id": 74,
 											"name": "startCol",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "determines the left edge of the table; defaults to 'A'"
 											},
@@ -818,11 +886,13 @@
 											"defaultValue": "\"A\""
 										},
 										{
-											"id": 67,
+											"id": 75,
 											"name": "startRow",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "determines the top edge of the table; defaults to 1"
 											},
@@ -836,41 +906,47 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 68,
+											"id": 76,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"children": [
 												{
-													"id": 69,
+													"id": 77,
 													"name": "columns",
 													"kind": 32,
 													"kindString": "Variable",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 162,
+															"line": 172,
 															"character": 17
 														}
 													],
 													"type": {
 														"type": "reference",
-														"name": "TableStruct",
-														"id": 2
+														"id": 2,
+														"name": "TableStruct"
 													}
 												},
 												{
-													"id": 70,
+													"id": 78,
 													"name": "table",
 													"kind": 32,
 													"kindString": "Variable",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 162,
+															"line": 172,
 															"character": 24
 														}
 													],
@@ -904,8 +980,8 @@
 													"title": "Variables",
 													"kind": 32,
 													"children": [
-														69,
-														70
+														77,
+														78
 													]
 												}
 											]
@@ -916,18 +992,18 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 158,
+									"line": 168,
 									"character": 16
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.getTable",
-								"id": 25
+								"id": 25,
+								"name": "ExcelFile.getTable"
 							}
 						},
 						{
-							"id": 51,
+							"id": 59,
 							"name": "getTableColumns",
 							"kind": 2048,
 							"kindString": "Method",
@@ -937,22 +1013,26 @@
 							},
 							"signatures": [
 								{
-									"id": 52,
+									"id": 60,
 									"name": "getTableColumns",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "getTableColumns retrieves an array of consecutive valid column names.",
 										"returns": "an excel table description\n"
 									},
 									"parameters": [
 										{
-											"id": 53,
+											"id": 61,
 											"name": "sheetName",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the sheet name to retrieve cells from"
 											},
@@ -962,11 +1042,13 @@
 											}
 										},
 										{
-											"id": 54,
+											"id": 62,
 											"name": "startCol",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the first column of the table; defaults to 'A'."
 											},
@@ -977,11 +1059,13 @@
 											"defaultValue": "\"A\""
 										},
 										{
-											"id": 55,
+											"id": 63,
 											"name": "row",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the row to iterate over; defaults to 1."
 											},
@@ -994,26 +1078,26 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "TableStruct",
-										"id": 2
+										"id": 2,
+										"name": "TableStruct"
 									}
 								}
 							],
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 89,
+									"line": 99,
 									"character": 23
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.getTableColumns",
-								"id": 14
+								"id": 14,
+								"name": "ExcelFile.getTableColumns"
 							}
 						},
 						{
-							"id": 60,
+							"id": 68,
 							"name": "nextExcelColIndex",
 							"kind": 2048,
 							"kindString": "Method",
@@ -1023,21 +1107,25 @@
 							},
 							"signatures": [
 								{
-									"id": 61,
+									"id": 69,
 									"name": "nextExcelColIndex",
 									"kind": 4096,
 									"kindString": "Call signature",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"comment": {
 										"shortText": "**generator** for Excel column indices starting at startCol.\nFollowing 'Z' the next column generated is 'AA' and so on. The generator\nstarts with producing startCol as first index.\n# Usage\n```\nfor (col of file.nextExcelColIndex(startCol='Y') {\n   printf(\"%s, \", col);      // -> Y, Z, AA, AB\n   if (col === 'AB')  { break; }\n}\n```"
 									},
 									"parameters": [
 										{
-											"id": 62,
+											"id": 70,
 											"name": "startCol",
 											"kind": 32768,
 											"kindString": "Parameter",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"comment": {
 												"text": "the first column index ('A', ....) to yield; defaults to 'A'\n"
 											},
@@ -1050,28 +1138,150 @@
 									],
 									"type": {
 										"type": "reference",
-										"name": "IterableIterator",
 										"typeArguments": [
 											{
 												"type": "intrinsic",
 												"name": "string"
 											}
-										]
+										],
+										"name": "IterableIterator"
 									}
 								}
 							],
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 134,
+									"line": 144,
 									"character": 29
 								}
 							],
 							"implementationOf": {
 								"type": "reference",
-								"name": "ExcelFile.nextExcelColIndex",
-								"id": 31
+								"id": 31,
+								"name": "ExcelFile.nextExcelColIndex"
 							}
+						},
+						{
+							"id": 51,
+							"name": "readData",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 52,
+									"name": "readData",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 53,
+											"name": "name",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										},
+										{
+											"id": 54,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 78,
+									"character": 19
+								}
+							]
+						},
+						{
+							"id": 47,
+							"name": "readFile",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 48,
+									"name": "readFile",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 49,
+											"name": "name",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 50,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "excel.ts",
+									"line": 74,
+									"character": 19
+								}
+							]
 						}
 					],
 					"groups": [
@@ -1093,23 +1303,25 @@
 							"title": "Accessors",
 							"kind": 262144,
 							"children": [
-								47
+								55
 							]
 						},
 						{
 							"title": "Methods",
 							"kind": 2048,
 							"children": [
-								94,
-								71,
-								76,
-								81,
+								102,
+								79,
+								84,
 								89,
-								56,
-								49,
-								63,
+								97,
+								64,
+								57,
+								71,
+								59,
+								68,
 								51,
-								60
+								47
 							]
 						}
 					],
@@ -1117,14 +1329,14 @@
 						{
 							"fileName": "excel.ts",
 							"line": 65,
-							"character": 17
+							"character": 18
 						}
 					],
 					"implementedTypes": [
 						{
 							"type": "reference",
-							"name": "ExcelFile",
-							"id": 10
+							"id": 10,
+							"name": "ExcelFile"
 						}
 					]
 				},
@@ -1159,21 +1371,27 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 37,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"parameters": [
 												{
 													"id": 38,
 													"name": "sheet",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "union",
 														"types": [
@@ -1193,7 +1411,9 @@
 													"name": "col",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "intrinsic",
 														"name": "string"
@@ -1204,7 +1424,9 @@
 													"name": "row",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "intrinsic",
 														"name": "number"
@@ -1249,25 +1471,31 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 22,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"parameters": [
 												{
 													"id": 23,
 													"name": "table",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "reference",
-														"name": "TableStruct",
-														"id": 2
+														"id": 2,
+														"name": "TableStruct"
 													}
 												},
 												{
@@ -1276,6 +1504,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1325,14 +1554,18 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 13,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"type": {
 												"type": "array",
 												"elementType": {
@@ -1374,21 +1607,27 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 27,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"parameters": [
 												{
 													"id": 28,
 													"name": "sheetID",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "union",
 														"types": [
@@ -1409,6 +1648,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1422,6 +1662,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1432,8 +1673,8 @@
 											],
 											"type": {
 												"type": "reference",
-												"name": "Table",
-												"id": 7
+												"id": 7,
+												"name": "Table"
 											}
 										}
 									],
@@ -1469,21 +1710,27 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 16,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"parameters": [
 												{
 													"id": 17,
 													"name": "sheetName",
 													"kind": 32768,
 													"kindString": "Parameter",
-													"flags": {},
+													"flags": {
+														"isExported": true
+													},
 													"type": {
 														"type": "intrinsic",
 														"name": "string"
@@ -1495,6 +1742,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1508,6 +1756,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1518,8 +1767,8 @@
 											],
 											"type": {
 												"type": "reference",
-												"name": "TableStruct",
-												"id": 2
+												"id": 2,
+												"name": "TableStruct"
 											}
 										}
 									],
@@ -1555,14 +1804,18 @@
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
-									"flags": {},
+									"flags": {
+										"isExported": true
+									},
 									"signatures": [
 										{
 											"id": 33,
 											"name": "__call",
 											"kind": 4096,
 											"kindString": "Call signature",
-											"flags": {},
+											"flags": {
+												"isExported": true
+											},
 											"parameters": [
 												{
 													"id": 34,
@@ -1570,6 +1823,7 @@
 													"kind": 32768,
 													"kindString": "Parameter",
 													"flags": {
+														"isExported": true,
 														"isOptional": true
 													},
 													"type": {
@@ -1580,13 +1834,13 @@
 											],
 											"type": {
 												"type": "reference",
-												"name": "IterableIterator",
 												"typeArguments": [
 													{
 														"type": "intrinsic",
 														"name": "string"
 													}
-												]
+												],
+												"name": "IterableIterator"
 											}
 										}
 									],
@@ -1625,8 +1879,8 @@
 					"implementedBy": [
 						{
 							"type": "reference",
-							"name": "File",
-							"id": 41
+							"id": 41,
+							"name": "Excel"
 						}
 					]
 				},
@@ -1657,8 +1911,8 @@
 							],
 							"type": {
 								"type": "reference",
-								"name": "TableStruct",
-								"id": 2
+								"id": 2,
+								"name": "TableStruct"
 							}
 						},
 						{
@@ -1850,7 +2104,7 @@
 			]
 		},
 		{
-			"id": 99,
+			"id": 107,
 			"name": "\"index\"",
 			"kind": 1,
 			"kindString": "External module",
@@ -1858,6 +2112,60 @@
 				"isExported": true
 			},
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/index.ts",
+			"children": [
+				{
+					"id": 111,
+					"name": "Excel",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 41
+				},
+				{
+					"id": 110,
+					"name": "ExcelFile",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 10
+				},
+				{
+					"id": 109,
+					"name": "Table",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 7
+				},
+				{
+					"id": 108,
+					"name": "TableStruct",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 2
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"kind": 16777216,
+					"children": [
+						111,
+						110,
+						109,
+						108
+					]
+				}
+			],
 			"sources": [
 				{
 					"fileName": "index.ts",
@@ -1867,7 +2175,7 @@
 			]
 		},
 		{
-			"id": 100,
+			"id": 112,
 			"name": "\"overview\"",
 			"kind": 1,
 			"kindString": "External module",
@@ -1894,8 +2202,8 @@
 			"kind": 1,
 			"children": [
 				1,
-				99,
-				100
+				107,
+				112
 			]
 		}
 	]

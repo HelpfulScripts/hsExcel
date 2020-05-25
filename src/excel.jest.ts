@@ -1,10 +1,10 @@
-import * as excel from './excel';
+import { Excel } from './excel';
 
 const TEST_FILE = './example/test.xlsx';
 
 describe('excel', () => {
 	it('should have excel defined', () => {
-		expect(excel).toBeDefined();
+		expect(Excel).toBeDefined();
 	});
   
 	describe('test file', () => {
@@ -13,7 +13,7 @@ describe('excel', () => {
 		let file:any;
 		
 		beforeEach(() => {
-			file = new excel.File(__dirname+'/'+NAME);
+			file = new Excel(__dirname+'/'+NAME);
 		});
 		
 		it('should have read '+NAME, () => {
