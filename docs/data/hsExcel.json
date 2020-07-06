@@ -758,6 +758,7 @@
 										"type": "array",
 										"elementType": {
 											"type": "reference",
+											"id": 107,
 											"name": "DataRow"
 										}
 									}
@@ -1517,6 +1518,7 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
+													"id": 107,
 													"name": "DataRow"
 												}
 											}
@@ -1934,6 +1936,7 @@
 								"type": "array",
 								"elementType": {
 									"type": "reference",
+									"id": 107,
 									"name": "DataRow"
 								}
 							}
@@ -2075,6 +2078,43 @@
 							"character": 28
 						}
 					]
+				},
+				{
+					"id": 107,
+					"name": "DataRow",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "excel.ts",
+							"line": 16,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "reference",
+										"name": "Date"
+									}
+								]
+							}
+						],
+						"name": "Array"
+					}
 				}
 			],
 			"groups": [
@@ -2093,6 +2133,13 @@
 						7,
 						2
 					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						107
+					]
 				}
 			],
 			"sources": [
@@ -2104,7 +2151,7 @@
 			]
 		},
 		{
-			"id": 107,
+			"id": 108,
 			"name": "\"index\"",
 			"kind": 1,
 			"kindString": "Module",
@@ -2114,7 +2161,7 @@
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/index.ts",
 			"children": [
 				{
-					"id": 111,
+					"id": 112,
 					"name": "Excel",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2124,7 +2171,7 @@
 					"target": 41
 				},
 				{
-					"id": 110,
+					"id": 111,
 					"name": "ExcelFile",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2134,7 +2181,7 @@
 					"target": 10
 				},
 				{
-					"id": 109,
+					"id": 110,
 					"name": "Table",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2144,7 +2191,7 @@
 					"target": 7
 				},
 				{
-					"id": 108,
+					"id": 109,
 					"name": "TableStruct",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2159,10 +2206,10 @@
 					"title": "References",
 					"kind": 16777216,
 					"children": [
+						112,
 						111,
 						110,
-						109,
-						108
+						109
 					]
 				}
 			],
@@ -2175,7 +2222,7 @@
 			]
 		},
 		{
-			"id": 112,
+			"id": 113,
 			"name": "\"overview\"",
 			"kind": 1,
 			"kindString": "Module",
@@ -2202,8 +2249,8 @@
 			"kind": 1,
 			"children": [
 				1,
-				107,
-				112
+				108,
+				113
 			]
 		}
 	]

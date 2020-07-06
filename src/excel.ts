@@ -8,12 +8,12 @@
  /** */
 import XLSX from 'xlsx';
 
-import { DataRow}   from 'hsdatab';
 import { WorkBook,
          WorkSheet,
          CellObject
        }            from 'xlsx/types';
 
+type DataRow = Array<number | string | Date>;
 
 /**
  * A structure describing an Excel table
