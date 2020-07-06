@@ -58,6 +58,6 @@
     },
     "dependencies": {
         "xlsx": "^0.15.3",
-        "hsdatab": "2.x.x",
+        "hsdatab": "2.x.x"
     }
 }
