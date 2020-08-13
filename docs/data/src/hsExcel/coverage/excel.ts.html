@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.88% </span>
+                <span class="strong">94.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/64</span>
+                <span class='fraction'>63/67</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.02% </span>
+                <span class="strong">92.68% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>40/43</span>
+                <span class='fraction'>38/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.67% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>13/15</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.36% </span>
+                <span class="strong">92.98% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>53/55</span>
+                <span class='fraction'>53/57</span>
             </div>
         
             
@@ -318,7 +318,10 @@
 <a name='L259'></a><a href='#L259'>259</a>
 <a name='L260'></a><a href='#L260'>260</a>
 <a name='L261'></a><a href='#L261'>261</a>
-<a name='L262'></a><a href='#L262'>262</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -326,6 +329,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,17 +437,19 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">180x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -586,8 +592,9 @@
  * 
  */
 &nbsp;
- /** */
-import XLSX from 'xlsx';
+/** */
+import { Log }  from 'hsutil'; const log = new Log('Excel'); 
+import XLSX     from 'xlsx';
 &nbsp;
 import { WorkBook,
          WorkSheet,
@@ -694,18 +701,20 @@ export class Excel implements ExcelFile {
 		const sheet:WorkSheet = this.wb.Sheets[table.sheetName];
 		const result:DataRow[] = [];
 		let row=0; 
-		while (true) {
+		while (true) { try {
 			let newRow = this.getRow(sheet, row+table.headerRow+1, table.colIndex);
-			let filledCells = 0;
-			for (let c in newRow) { if (newRow[c]) { filledCells++; }}
-            row++;
+            let filledCells = 0;
             // only return non-empty rows
-            if (filledCells &gt; 0) { result.push(newRow); }
+            if (newRow.some((c:string) =&gt; c.length&gt;0)) { result.push(newRow); }
             // if no maxRows specified: break upon first empty row
             else if (maxRows&lt;=0) {  break; }
+            row++;
             // if rows exceed maxRows: break;
 			if (maxRows&gt;0 &amp;&amp; row&gt;=maxRows) { break; }
-		}
+        } catch(e) {
+<span class="cstat-no" title="statement not covered" >            log.error(`processing row ${row+table.headerRow+1} for sheet ${table.sheetName}: ${e}`);</span>
+<span class="cstat-no" title="statement not covered" >            throw e;</span>
+        }}
 		return result;
 	}
 	

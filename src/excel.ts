@@ -5,8 +5,9 @@
  * 
  */
 
- /** */
-import XLSX from 'xlsx';
+/** */
+import { Log }  from 'hsutil'; const log = new Log('Excel'); 
+import XLSX     from 'xlsx';
 
 import { WorkBook,
          WorkSheet,
@@ -113,18 +114,20 @@ export class Excel implements ExcelFile {
 		const sheet:WorkSheet = this.wb.Sheets[table.sheetName];
 		const result:DataRow[] = [];
 		let row=0; 
-		while (true) {
+		while (true) { try {
 			let newRow = this.getRow(sheet, row+table.headerRow+1, table.colIndex);
-			let filledCells = 0;
-			for (let c in newRow) { if (newRow[c]) { filledCells++; }}
-            row++;
+            let filledCells = 0;
             // only return non-empty rows
-            if (filledCells > 0) { result.push(newRow); }
+            if (newRow.some((c:string) => c.length>0)) { result.push(newRow); }
             // if no maxRows specified: break upon first empty row
             else if (maxRows<=0) {  break; }
+            row++;
             // if rows exceed maxRows: break;
 			if (maxRows>0 && row>=maxRows) { break; }
-		}
+        } catch(e) {
+            log.error(`processing row ${row+table.headerRow+1} for sheet ${table.sheetName}: ${e}`);
+            throw e;
+        }}
 		return result;
 	}
 	

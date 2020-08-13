@@ -97,7 +97,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 66,
+									"line": 67,
 									"character": 21
 								}
 							]
@@ -114,7 +114,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 66,
+									"line": 67,
 									"character": 11
 								}
 							],
@@ -150,7 +150,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 82,
+									"line": 83,
 									"character": 23
 								}
 							]
@@ -237,7 +237,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 246,
+									"line": 249,
 									"character": 21
 								}
 							]
@@ -332,7 +332,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 182,
+									"line": 185,
 									"character": 20
 								}
 							],
@@ -439,7 +439,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 206,
+									"line": 209,
 									"character": 23
 								}
 							]
@@ -540,7 +540,7 @@
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 223,
+																	"line": 226,
 																	"character": 13
 																}
 															],
@@ -561,7 +561,7 @@
 															"sources": [
 																{
 																	"fileName": "excel.ts",
-																	"line": 223,
+																	"line": 226,
 																	"character": 23
 																}
 															],
@@ -600,7 +600,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 220,
+									"line": 223,
 									"character": 35
 								}
 							]
@@ -692,7 +692,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 234,
+									"line": 237,
 									"character": 15
 								}
 							]
@@ -758,7 +758,7 @@
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"id": 107,
+											"id": 108,
 											"name": "DataRow"
 										}
 									}
@@ -767,7 +767,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 111,
+									"line": 112,
 									"character": 23
 								}
 							],
@@ -811,7 +811,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 88,
+									"line": 89,
 									"character": 21
 								}
 							],
@@ -926,7 +926,7 @@
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 172,
+															"line": 175,
 															"character": 17
 														}
 													],
@@ -947,7 +947,7 @@
 													"sources": [
 														{
 															"fileName": "excel.ts",
-															"line": 172,
+															"line": 175,
 															"character": 24
 														}
 													],
@@ -993,7 +993,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 168,
+									"line": 171,
 									"character": 16
 								}
 							],
@@ -1087,7 +1087,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 99,
+									"line": 100,
 									"character": 23
 								}
 							],
@@ -1152,7 +1152,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 144,
+									"line": 147,
 									"character": 29
 								}
 							],
@@ -1218,7 +1218,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 78,
+									"line": 79,
 									"character": 19
 								}
 							]
@@ -1279,7 +1279,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 74,
+									"line": 75,
 									"character": 19
 								}
 							]
@@ -1329,7 +1329,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 65,
+							"line": 66,
 							"character": 18
 						}
 					],
@@ -1361,7 +1361,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 42,
+									"line": 43,
 									"character": 16
 								}
 							],
@@ -1443,7 +1443,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 42,
+											"line": 43,
 											"character": 17
 										}
 									]
@@ -1461,7 +1461,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 39,
+									"line": 40,
 									"character": 19
 								}
 							],
@@ -1518,7 +1518,7 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
-													"id": 107,
+													"id": 108,
 													"name": "DataRow"
 												}
 											}
@@ -1527,7 +1527,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 39,
+											"line": 40,
 											"character": 20
 										}
 									]
@@ -1545,7 +1545,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 37,
+									"line": 38,
 									"character": 17
 								}
 							],
@@ -1580,7 +1580,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 37,
+											"line": 38,
 											"character": 18
 										}
 									]
@@ -1598,7 +1598,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 40,
+									"line": 41,
 									"character": 12
 								}
 							],
@@ -1683,7 +1683,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 40,
+											"line": 41,
 											"character": 13
 										}
 									]
@@ -1701,7 +1701,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 38,
+									"line": 39,
 									"character": 19
 								}
 							],
@@ -1777,7 +1777,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 38,
+											"line": 39,
 											"character": 20
 										}
 									]
@@ -1795,7 +1795,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 41,
+									"line": 42,
 									"character": 21
 								}
 							],
@@ -1849,7 +1849,7 @@
 									"sources": [
 										{
 											"fileName": "excel.ts",
-											"line": 41,
+											"line": 42,
 											"character": 22
 										}
 									]
@@ -1874,7 +1874,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 36,
+							"line": 37,
 							"character": 26
 						}
 					],
@@ -1907,7 +1907,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 32,
+									"line": 33,
 									"character": 11
 								}
 							],
@@ -1928,7 +1928,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 33,
+									"line": 34,
 									"character": 9
 								}
 							],
@@ -1936,7 +1936,7 @@
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"id": 107,
+									"id": 108,
 									"name": "DataRow"
 								}
 							}
@@ -1955,7 +1955,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 31,
+							"line": 32,
 							"character": 22
 						}
 					]
@@ -1983,7 +1983,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 25,
+									"line": 26,
 									"character": 12
 								}
 							],
@@ -2006,7 +2006,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 24,
+									"line": 25,
 									"character": 13
 								}
 							],
@@ -2026,7 +2026,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 22,
+									"line": 23,
 									"character": 9
 								}
 							],
@@ -2049,7 +2049,7 @@
 							"sources": [
 								{
 									"fileName": "excel.ts",
-									"line": 23,
+									"line": 24,
 									"character": 13
 								}
 							],
@@ -2074,13 +2074,13 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 21,
+							"line": 22,
 							"character": 28
 						}
 					]
 				},
 				{
-					"id": 107,
+					"id": 108,
 					"name": "DataRow",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -2088,7 +2088,7 @@
 					"sources": [
 						{
 							"fileName": "excel.ts",
-							"line": 16,
+							"line": 17,
 							"character": 12
 						}
 					],
@@ -2115,6 +2115,27 @@
 						],
 						"name": "Array"
 					}
+				},
+				{
+					"id": 107,
+					"name": "log",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "excel.ts",
+							"line": 9,
+							"character": 40
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Log"
+					},
+					"defaultValue": "new Log('Excel')"
 				}
 			],
 			"groups": [
@@ -2138,6 +2159,13 @@
 					"title": "Type aliases",
 					"kind": 4194304,
 					"children": [
+						108
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
 						107
 					]
 				}
@@ -2151,7 +2179,7 @@
 			]
 		},
 		{
-			"id": 108,
+			"id": 109,
 			"name": "\"index\"",
 			"kind": 1,
 			"kindString": "Module",
@@ -2161,7 +2189,7 @@
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/index.ts",
 			"children": [
 				{
-					"id": 112,
+					"id": 113,
 					"name": "Excel",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2171,7 +2199,7 @@
 					"target": 41
 				},
 				{
-					"id": 111,
+					"id": 112,
 					"name": "ExcelFile",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2181,7 +2209,7 @@
 					"target": 10
 				},
 				{
-					"id": 110,
+					"id": 111,
 					"name": "Table",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2191,7 +2219,7 @@
 					"target": 7
 				},
 				{
-					"id": 109,
+					"id": 110,
 					"name": "TableStruct",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -2206,10 +2234,10 @@
 					"title": "References",
 					"kind": 16777216,
 					"children": [
+						113,
 						112,
 						111,
-						110,
-						109
+						110
 					]
 				}
 			],
@@ -2222,7 +2250,7 @@
 			]
 		},
 		{
-			"id": 113,
+			"id": 114,
 			"name": "\"overview\"",
 			"kind": 1,
 			"kindString": "Module",
@@ -2249,8 +2277,8 @@
 			"kind": 1,
 			"children": [
 				1,
-				108,
-				113
+				109,
+				114
 			]
 		}
 	]
