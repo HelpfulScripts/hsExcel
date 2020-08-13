@@ -63,7 +63,7 @@ function make(grunt) {
 
     //------ Add Doc Tasks
     grunt.registerTask('noTask', []);
-    grunt.registerTask('doc', ['clean:docs', 'copy:example', 'typedoc', 'sourceCode', 'copy:docs', `${(type === 'app')? 'copy:docs2NPM' : 'noTask'}`]);
+    grunt.registerTask('doc', ['clean:docs', 'copy:example', 'typedoc', 'insertExamples', 'sourceCode', 'copy:docs', `${(type === 'app')? 'copy:docs2NPM' : 'noTask'}`]);
 
     //------ Add Staging Tasks
     grunt.registerTask('stage', [`${(type === 'app')? 'copy:app2NPM': 'copy:lib2NPM'}`]);
@@ -103,6 +103,7 @@ function make(grunt) {
 
     grunt.registerMultiTask('sourceCode', translateSourcesToHTML);  
     grunt.registerMultiTask('cleanupCoverage', removeTimestampFromCoverage);  
+    grunt.registerMultiTask('insertExamples', insertExamples);  
 
     //------ Add general help 
     grunt.registerTask('h', 'help on grunt options', () => {
@@ -298,6 +299,13 @@ function make(grunt) {
                 rename: (dest, src) => dest + src.replace('.ts','.html')
             }
         },
+        insertExamples: { 
+            main: {  // insert example code into comments
+                cwd: 'src/', 
+                src: ['**/*.js', '**/*.css'], 
+                dest: `docs/data/${lib}.json`
+            }
+        },
         cleanupCoverage: { 
             main: {  // translate all *.ts files in src *.html files in doc
                 expand: true, 
@@ -438,5 +446,23 @@ function make(grunt) {
 
     function writeIndexJson() {
         grunt.file.write('docs/data/index.json', `{"docs": ["${lib}.json"], "title": "HS Libraries"}`);
+    }
+
+    function insertExamples() {
+        this.files.map(f => {
+            let changed = false;
+            const content = grunt.file.read(f.dest);
+            const result = content.replace(/ximport='(.*?)'/g, (match, p1) => {
+                const i = f.src.indexOf(p1);
+                if (i>=0) {
+                    changed = true;
+                    grunt.log.writeln(`substituting ${match} = ${p1} for  ${f.cwd+f.src[i]}`);
+                    const replacement = grunt.file.read(f.cwd+f.src[i]).replace(/\n/g, "\\n").replace(/\"/g, "\\\"");
+                    return '/*ximport*/' + replacement;
+                }
+                return '';
+            });
+            if (changed) { grunt.file.write(f.dest, result); }
+        })
     }
 };
