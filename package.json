@@ -37,7 +37,7 @@
         "@types/node": "14.0.x",
         "@types/mithril": "2.0.x",
         "@types/jest": "26.x.x",
-        "grunt": "^1.0.4",
+        "grunt": "1.2.x",
         "grunt-contrib-clean": "^2.0.0",
         "grunt-contrib-concat": "^1.0.1",
         "grunt-contrib-copy": "^1.0.0",
