@@ -6,7 +6,7 @@ hsExcel
 [![Build Status](https://github.com/HelpfulScripts/hsExcel/workflows/CI/badge.svg)](https://github.com/HelpfulScripts/hsExcel/)
 [![Coverage Status](https://coveralls.io/repos/github/HelpfulScripts/hsExcel/badge.svg?branch=master)](https://coveralls.io/github/HelpfulScripts/hsExcel?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/HelpfulScripts/hsExcel/badge.svg?targetFile=package.json)](https://snyk.io/test/github/HelpfulScripts/hsExcel?targetFile=package.json)
-[![Dependencies Status](https://david-dm.org/helpfulscripts/hshsexceldocs.svg)](https://david-dm.org/helpfulscripts/hsexcel)
+[![Dependencies Status](https://david-dm.org/helpfulscripts/hsexcel.svg)](https://david-dm.org/helpfulscripts/hsexcel)
 
 Helpful Scripts ES6 access to Excel files based on [xlsx](https://www.npmjs.com/package/xlsx).
 
