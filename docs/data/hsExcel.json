@@ -954,24 +954,9 @@
 													"type": {
 														"type": "array",
 														"elementType": {
-															"type": "array",
-															"elementType": {
-																"type": "union",
-																"types": [
-																	{
-																		"type": "intrinsic",
-																		"name": "string"
-																	},
-																	{
-																		"type": "intrinsic",
-																		"name": "number"
-																	},
-																	{
-																		"type": "reference",
-																		"name": "Date"
-																	}
-																]
-															}
+															"type": "reference",
+															"id": 108,
+															"name": "DataRow"
 														}
 													}
 												}
@@ -2259,8 +2244,8 @@
 			},
 			"originalName": "/Users/sth1pal/Documents/Development/JavaScript/nodejs/ts6/dev/hsLibs/node/hsExcel/src/overview.ts",
 			"comment": {
-				"shortText": "# Excel\nHelpful Scripts convenience functions to access tables in Excel files.\n<a href=\"https://github.com/HelpfulScripts/hsExcel\" target=\"_blank\">[Github page]</a>\n<a href=\"./data/src/hsExcel/coverage/\" target=\"_blank\">[Coverage Info]</a>\n___",
-				"text": "Uses the [Sheet JS xlsx parser and writer](https://github.com/SheetJS/js-xlsx).\n\n#### Excel related functions\n- &nbsp; {@link excel.File File} access to Excel files.\n\n"
+				"shortText": "# Excel",
+				"text": "[![NPM License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://www.npmjs.com/package/hsexcel)\n[![npm version](https://badge.fury.io/js/hsexcel.svg)](https://badge.fury.io/js/hsexcel)\n[![docs](https://img.shields.io/badge/hsDocs-hsExcel-blue.svg)](https://helpfulscripts.github.io/hsExcel/#!/api/hsExcel/0)\n[![Build Status](https://github.com/HelpfulScripts/hsExcel/workflows/CI/badge.svg)](https://github.com/HelpfulScripts/hsExcel/)\n[![Coverage Status](https://coveralls.io/repos/github/HelpfulScripts/hsExcel/badge.svg?branch=master)](https://coveralls.io/github/HelpfulScripts/hsExcel?branch=master)\n[![Known Vulnerabilities](https://snyk.io/test/github/HelpfulScripts/hsExcel/badge.svg?targetFile=package.json)](https://snyk.io/test/github/HelpfulScripts/hsExcel?targetFile=package.json)\n[![Dependencies Status](https://david-dm.org/helpfulscripts/hsexcel.svg)](https://david-dm.org/helpfulscripts/hsexcel)\n\n___\n\nHelpful Scripts convenience functions to access tables in Excel files.\n<a href=\"https://github.com/HelpfulScripts/hsExcel\" target=\"_blank\">[Github page]</a>\n<a href=\"./data/src/hsExcel/coverage/\" target=\"_blank\">[Coverage Info]</a>\n___\n\nUses the [Sheet JS xlsx parser and writer](https://github.com/SheetJS/js-xlsx).\n\n#### Excel related functions\n- &nbsp; {@link excel.File File} access to Excel files.\n\n"
 			},
 			"sources": [
 				{

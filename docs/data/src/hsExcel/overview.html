@@ -23,18 +23,29 @@
                 <h1>overview.ts</h1>
                 <div class='listing'><code><p id=1 class="line"><span>&nbsp;&nbsp;&nbsp;1</span><comment>/**</comment></p>
 <p id=2 class="line"><span>&nbsp;&nbsp;&nbsp;2</span><comment>&nbsp;*&nbsp;#&nbsp;Excel&nbsp;</comment></p>
-<p id=3 class="line"><span>&nbsp;&nbsp;&nbsp;3</span><comment>&nbsp;*&nbsp;Helpful&nbsp;Scripts&nbsp;convenience&nbsp;functions&nbsp;to&nbsp;access&nbsp;tables&nbsp;in&nbsp;Excel&nbsp;files.</comment></p>
-<p id=4 class="line"><span>&nbsp;&nbsp;&nbsp;4</span><comment>&nbsp;*&nbsp;<a&nbsp;href=<quote>"https:<comment>//github.com/HelpfulScripts/hsExcel"</quote>&nbsp;target=<quote>"_blank"</quote>>[Github&nbsp;page]</a></comment></comment></p>
-<p id=5 class="line"><span>&nbsp;&nbsp;&nbsp;5</span><comment><comment></comment>&nbsp;*&nbsp;<a&nbsp;href=<quote>"./data/src/hsExcel/coverage/"</quote>&nbsp;target=<quote>"_blank"</quote>>[Coverage&nbsp;Info]</a></comment></p>
-<p id=6 class="line"><span>&nbsp;&nbsp;&nbsp;6</span><comment>&nbsp;*&nbsp;___</comment></p>
-<p id=7 class="line"><span>&nbsp;&nbsp;&nbsp;7</span><comment>&nbsp;*&nbsp;</comment></p>
-<p id=8 class="line"><span>&nbsp;&nbsp;&nbsp;8</span><comment>&nbsp;*&nbsp;Uses&nbsp;the&nbsp;[Sheet&nbsp;JS&nbsp;xlsx&nbsp;parser&nbsp;and&nbsp;writer](https:<comment>//github.com/SheetJS/js-xlsx).</comment></comment></p>
-<p id=9 class="line"><span>&nbsp;&nbsp;&nbsp;9</span><comment><comment></comment>&nbsp;*&nbsp;</comment></p>
-<p id=10 class="line"><span>&nbsp;&nbsp;10</span><comment>&nbsp;*&nbsp;####&nbsp;Excel&nbsp;related&nbsp;functions</comment></p>
-<p id=11 class="line"><span>&nbsp;&nbsp;11</span><comment>&nbsp;*&nbsp;-&nbsp;&nbsp;&nbsp;{@link&nbsp;excel.File&nbsp;File}&nbsp;access&nbsp;to&nbsp;Excel&nbsp;files.</comment></p>
-<p id=12 class="line"><span>&nbsp;&nbsp;12</span><comment>&nbsp;*</comment></p>
-<p id=13 class="line"><span>&nbsp;&nbsp;13</span><comment>&nbsp;*/</comment></p>
-<p id=14 class="line"><span>&nbsp;&nbsp;14</span></p>
-<p id=15 class="line"><span>&nbsp;&nbsp;15</span>&nbsp;<comment>/**&nbsp;*/</comment></p></code></div>
+<p id=3 class="line"><span>&nbsp;&nbsp;&nbsp;3</span><comment>&nbsp;*&nbsp;</comment></p>
+<p id=4 class="line"><span>&nbsp;&nbsp;&nbsp;4</span><comment>[![NPM&nbsp;License](https:<comment>//img.shields.io/badge/license-MIT-brightgreen.svg)](https://www.npmjs.com/package/hsexcel)&nbsp;</comment></comment></p>
+<p id=5 class="line"><span>&nbsp;&nbsp;&nbsp;5</span><comment><comment></comment>[![npm&nbsp;version](https:<comment>//badge.fury.io/js/hsexcel.svg)](https://badge.fury.io/js/hsexcel)</comment></comment></p>
+<p id=6 class="line"><span>&nbsp;&nbsp;&nbsp;6</span><comment><comment></comment>[![docs](https:<comment>//img.shields.io/badge/hsDocs-hsExcel-blue.svg)](https://helpfulscripts.github.io/hsExcel/#!/api/hsExcel/0)</comment></comment></p>
+<p id=7 class="line"><span>&nbsp;&nbsp;&nbsp;7</span><comment><comment></comment>[![Build&nbsp;Status](https:<comment>//github.com/HelpfulScripts/hsExcel/workflows/CI/badge.svg)](https://github.com/HelpfulScripts/hsExcel/)</comment></comment></p>
+<p id=8 class="line"><span>&nbsp;&nbsp;&nbsp;8</span><comment><comment></comment>[![Coverage&nbsp;Status](https:<comment>//coveralls.io/repos/github/HelpfulScripts/hsExcel/badge.svg?branch=master)](https://coveralls.io/github/HelpfulScripts/hsExcel?branch=master)</comment></comment></p>
+<p id=9 class="line"><span>&nbsp;&nbsp;&nbsp;9</span><comment><comment></comment>[![Known&nbsp;Vulnerabilities](https:<comment>//snyk.io/test/github/HelpfulScripts/hsExcel/badge.svg?targetFile=package.json)](https://snyk.io/test/github/HelpfulScripts/hsExcel?targetFile=package.json)</comment></comment></p>
+<p id=10 class="line"><span>&nbsp;&nbsp;10</span><comment><comment></comment>[![Dependencies&nbsp;Status](https:<comment>//david-dm.org/helpfulscripts/hsexcel.svg)](https://david-dm.org/helpfulscripts/hsexcel)</comment></comment></p>
+<p id=11 class="line"><span>&nbsp;&nbsp;11</span><comment><comment></comment></comment></p>
+<p id=12 class="line"><span>&nbsp;&nbsp;12</span><comment>&nbsp;*&nbsp;___</comment></p>
+<p id=13 class="line"><span>&nbsp;&nbsp;13</span><comment>&nbsp;</comment></p>
+<p id=14 class="line"><span>&nbsp;&nbsp;14</span><comment>&nbsp;*&nbsp;Helpful&nbsp;Scripts&nbsp;convenience&nbsp;functions&nbsp;to&nbsp;access&nbsp;tables&nbsp;in&nbsp;Excel&nbsp;files.</comment></p>
+<p id=15 class="line"><span>&nbsp;&nbsp;15</span><comment>&nbsp;*&nbsp;&lt;a&nbsp;href=<quote>"https:<comment>//github.com/HelpfulScripts/hsExcel"</quote>&nbsp;target=<quote>"_blank"</quote>&gt;[Github&nbsp;page]&lt;/a&gt;</comment></comment></p>
+<p id=16 class="line"><span>&nbsp;&nbsp;16</span><comment><comment></comment>&nbsp;*&nbsp;&lt;a&nbsp;href=<quote>"./data/src/hsExcel/coverage/"</quote>&nbsp;target=<quote>"_blank"</quote>&gt;[Coverage&nbsp;Info]&lt;/a&gt;</comment></p>
+<p id=17 class="line"><span>&nbsp;&nbsp;17</span><comment>&nbsp;*&nbsp;___</comment></p>
+<p id=18 class="line"><span>&nbsp;&nbsp;18</span><comment>&nbsp;*&nbsp;</comment></p>
+<p id=19 class="line"><span>&nbsp;&nbsp;19</span><comment>&nbsp;*&nbsp;Uses&nbsp;the&nbsp;[Sheet&nbsp;JS&nbsp;xlsx&nbsp;parser&nbsp;and&nbsp;writer](https:<comment>//github.com/SheetJS/js-xlsx).</comment></comment></p>
+<p id=20 class="line"><span>&nbsp;&nbsp;20</span><comment><comment></comment>&nbsp;*&nbsp;</comment></p>
+<p id=21 class="line"><span>&nbsp;&nbsp;21</span><comment>&nbsp;*&nbsp;####&nbsp;Excel&nbsp;related&nbsp;functions</comment></p>
+<p id=22 class="line"><span>&nbsp;&nbsp;22</span><comment>&nbsp;*&nbsp;-&nbsp;&nbsp;&nbsp;{@link&nbsp;excel.File&nbsp;File}&nbsp;access&nbsp;to&nbsp;Excel&nbsp;files.</comment></p>
+<p id=23 class="line"><span>&nbsp;&nbsp;23</span><comment>&nbsp;*</comment></p>
+<p id=24 class="line"><span>&nbsp;&nbsp;24</span><comment>&nbsp;*/</comment></p>
+<p id=25 class="line"><span>&nbsp;&nbsp;25</span></p>
+<p id=26 class="line"><span>&nbsp;&nbsp;26</span>&nbsp;<comment>/**&nbsp;*/</comment></p></code></div>
                 </body>
             

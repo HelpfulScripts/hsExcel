@@ -37,7 +37,7 @@
 <p id=14 class="line"><span>&nbsp;&nbsp;14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CellObject</p>
 <p id=15 class="line"><span>&nbsp;&nbsp;15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;<quote>'xlsx/types'</quote>;</p>
 <p id=16 class="line"><span>&nbsp;&nbsp;16</span></p>
-<p id=17 class="line"><span>&nbsp;&nbsp;17</span>type&nbsp;DataRow&nbsp;=&nbsp;Array<number&nbsp;|&nbsp;string&nbsp;|&nbsp;Date>;</p>
+<p id=17 class="line"><span>&nbsp;&nbsp;17</span>type&nbsp;DataRow&nbsp;=&nbsp;Array&lt;number&nbsp;|&nbsp;string&nbsp;|&nbsp;Date&gt;;</p>
 <p id=18 class="line"><span>&nbsp;&nbsp;18</span></p>
 <p id=19 class="line"><span>&nbsp;&nbsp;19</span><comment>/**</comment></p>
 <p id=20 class="line"><span>&nbsp;&nbsp;20</span><comment>&nbsp;*&nbsp;A&nbsp;structure&nbsp;describing&nbsp;an&nbsp;Excel&nbsp;table</comment></p>
@@ -58,12 +58,12 @@
 <p id=35 class="line"><span>&nbsp;&nbsp;35</span>}</p>
 <p id=36 class="line"><span>&nbsp;&nbsp;36</span></p>
 <p id=37 class="line"><span>&nbsp;&nbsp;37</span>export&nbsp;interface&nbsp;ExcelFile&nbsp;{</p>
-<p id=38 class="line"><span>&nbsp;&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;getSheetNames:		()&nbsp;=>string[];</p>
-<p id=39 class="line"><span>&nbsp;&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;getTableColumns:	(sheetName:string,&nbsp;startCol?:string,&nbsp;row?:number)&nbsp;=>&nbsp;TableStruct;</p>
-<p id=40 class="line"><span>&nbsp;&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;getRowsForTable:	(table:TableStruct,&nbsp;maxRows?:number)&nbsp;=>&nbsp;DataRow[];</p>
-<p id=41 class="line"><span>&nbsp;&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;getTable:			(sheetID:string|number,&nbsp;startCol?:string,&nbsp;startRow?:number)&nbsp;=>&nbsp;Table;</p>
-<p id=42 class="line"><span>&nbsp;&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;nextExcelColIndex:	(startCol?:string)&nbsp;=>&nbsp;IterableIterator<string>;</p>
-<p id=43 class="line"><span>&nbsp;&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;getCellValue:		(sheet:string|WorkSheet,&nbsp;col:string,&nbsp;row:number)&nbsp;=>&nbsp;string;		</p>
+<p id=38 class="line"><span>&nbsp;&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;getSheetNames:		()&nbsp;=&gt;string[];</p>
+<p id=39 class="line"><span>&nbsp;&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;getTableColumns:	(sheetName:string,&nbsp;startCol?:string,&nbsp;row?:number)&nbsp;=&gt;&nbsp;TableStruct;</p>
+<p id=40 class="line"><span>&nbsp;&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;getRowsForTable:	(table:TableStruct,&nbsp;maxRows?:number)&nbsp;=&gt;&nbsp;DataRow[];</p>
+<p id=41 class="line"><span>&nbsp;&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;getTable:			(sheetID:string|number,&nbsp;startCol?:string,&nbsp;startRow?:number)&nbsp;=&gt;&nbsp;Table;</p>
+<p id=42 class="line"><span>&nbsp;&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;nextExcelColIndex:	(startCol?:string)&nbsp;=&gt;&nbsp;IterableIterator&lt;string&gt;;</p>
+<p id=43 class="line"><span>&nbsp;&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;getCellValue:		(sheet:string|WorkSheet,&nbsp;col:string,&nbsp;row:number)&nbsp;=&gt;&nbsp;string;		</p>
 <p id=44 class="line"><span>&nbsp;&nbsp;44</span>}</p>
 <p id=45 class="line"><span>&nbsp;&nbsp;45</span></p>
 <p id=46 class="line"><span>&nbsp;&nbsp;46</span><comment>/**</comment></p>
@@ -141,12 +141,12 @@
 <p id=118 class="line"><span>&nbsp;118</span>			let&nbsp;newRow&nbsp;=&nbsp;this.getRow(sheet,&nbsp;row+table.headerRow+1,&nbsp;table.colIndex);</p>
 <p id=119 class="line"><span>&nbsp;119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;filledCells&nbsp;=&nbsp;0;</p>
 <p id=120 class="line"><span>&nbsp;120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;only&nbsp;return&nbsp;non-empty&nbsp;rows</comment></p>
-<p id=121 class="line"><span>&nbsp;121</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRow.some((c:string)&nbsp;=>&nbsp;c.length>0))&nbsp;{&nbsp;result.push(newRow);&nbsp;}</p>
+<p id=121 class="line"><span>&nbsp;121</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRow.some((c:string)&nbsp;=&gt;&nbsp;c.length&gt;0))&nbsp;{&nbsp;result.push(newRow);&nbsp;}</p>
 <p id=122 class="line"><span>&nbsp;122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;no&nbsp;maxRows&nbsp;specified:&nbsp;break&nbsp;upon&nbsp;first&nbsp;empty&nbsp;row</comment></p>
-<p id=123 class="line"><span>&nbsp;123</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(maxRows<=0)&nbsp;{&nbsp;&nbsp;break;&nbsp;}</p>
+<p id=123 class="line"><span>&nbsp;123</span><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(maxRows&lt;=0)&nbsp;{&nbsp;&nbsp;break;&nbsp;}</p>
 <p id=124 class="line"><span>&nbsp;124</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row++;</p>
 <p id=125 class="line"><span>&nbsp;125</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;if&nbsp;rows&nbsp;exceed&nbsp;maxRows:&nbsp;break;</comment></p>
-<p id=126 class="line"><span>&nbsp;126</span><comment></comment>			if&nbsp;(maxRows>0&nbsp;&&&nbsp;row>=maxRows)&nbsp;{&nbsp;break;&nbsp;}</p>
+<p id=126 class="line"><span>&nbsp;126</span><comment></comment>			if&nbsp;(maxRows&gt;0&nbsp;&&&nbsp;row&gt;=maxRows)&nbsp;{&nbsp;break;&nbsp;}</p>
 <p id=127 class="line"><span>&nbsp;127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch(e)&nbsp;{</p>
 <p id=128 class="line"><span>&nbsp;128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.error(`processing&nbsp;row&nbsp;${row+table.headerRow+1}&nbsp;for&nbsp;sheet&nbsp;${table.sheetName}:&nbsp;${e}`);</p>
 <p id=129 class="line"><span>&nbsp;129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;e;</p>
@@ -161,23 +161,23 @@
 <p id=138 class="line"><span>&nbsp;138</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;#&nbsp;Usage</comment></p>
 <p id=139 class="line"><span>&nbsp;139</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
 <p id=140 class="line"><span>&nbsp;140</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;for&nbsp;(col&nbsp;of&nbsp;file.nextExcelColIndex(startCol=<quote>'Y'</quote>)&nbsp;{&nbsp;</comment></p>
-<p id=141 class="line"><span>&nbsp;141</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;printf(<quote>"%s,&nbsp;"</quote>,&nbsp;col);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;->&nbsp;Y,&nbsp;Z,&nbsp;AA,&nbsp;AB</comment></comment></p>
+<p id=141 class="line"><span>&nbsp;141</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;printf(<quote>"%s,&nbsp;"</quote>,&nbsp;col);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<comment>//&nbsp;-&gt;&nbsp;Y,&nbsp;Z,&nbsp;AA,&nbsp;AB</comment></comment></p>
 <p id=142 class="line"><span>&nbsp;142</span><comment><comment></comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(col&nbsp;===&nbsp;<quote>'AB'</quote>)&nbsp;&nbsp;{&nbsp;break;&nbsp;}</comment></p>
 <p id=143 class="line"><span>&nbsp;143</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;}</comment></p>
 <p id=144 class="line"><span>&nbsp;144</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;```</comment></p>
 <p id=145 class="line"><span>&nbsp;145</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;startCol&nbsp;the&nbsp;first&nbsp;column&nbsp;index&nbsp;(<quote>'A'</quote>,&nbsp;....)&nbsp;to&nbsp;yield;&nbsp;defaults&nbsp;to&nbsp;<quote>'A'</quote></comment></p>
 <p id=146 class="line"><span>&nbsp;146</span><comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</comment></p>
-<p id=147 class="line"><span>&nbsp;147</span>&nbsp;&nbsp;&nbsp;&nbsp;public*&nbsp;nextExcelColIndex(startCol=<quote>'A'</quote>):IterableIterator<string>&nbsp;{</p>
+<p id=147 class="line"><span>&nbsp;147</span>&nbsp;&nbsp;&nbsp;&nbsp;public*&nbsp;nextExcelColIndex(startCol=<quote>'A'</quote>):IterableIterator&lt;string&gt;&nbsp;{</p>
 <p id=148 class="line"><span>&nbsp;148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;nextChar(c:string):string&nbsp;{&nbsp;return&nbsp;String.fromCharCode(c.charCodeAt(0)&nbsp;+&nbsp;1);&nbsp;}</p>
 <p id=149 class="line"><span>&nbsp;149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p id=150 class="line"><span>&nbsp;150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;c&nbsp;=&nbsp;startCol;</p>
 <p id=151 class="line"><span>&nbsp;151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(true)&nbsp;{</p>
 <p id=152 class="line"><span>&nbsp;152</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;c;</p>
 <p id=153 class="line"><span>&nbsp;153</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(c.length&nbsp;===&nbsp;1)&nbsp;{</p>
-<p id=154 class="line"><span>&nbsp;154</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(c&nbsp;<&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])&nbsp;:&nbsp;<quote>'AA'</quote>;</p>
+<p id=154 class="line"><span>&nbsp;154</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(c&nbsp;&lt;&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])&nbsp;:&nbsp;<quote>'AA'</quote>;</p>
 <p id=155 class="line"><span>&nbsp;155</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</p>
 <p id=156 class="line"><span>&nbsp;156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ch&nbsp;=&nbsp;nextChar(c[1]);</p>
-<p id=157 class="line"><span>&nbsp;157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(ch&nbsp;>&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])+<quote>'A'</quote>&nbsp;:&nbsp;c[0]&nbsp;+&nbsp;ch;</p>
+<p id=157 class="line"><span>&nbsp;157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;(ch&nbsp;&gt;&nbsp;<quote>'Z'</quote>)?&nbsp;nextChar(c[0])+<quote>'A'</quote>&nbsp;:&nbsp;c[0]&nbsp;+&nbsp;ch;</p>
 <p id=158 class="line"><span>&nbsp;158</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
 <p id=159 class="line"><span>&nbsp;159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
 <p id=160 class="line"><span>&nbsp;160</span>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
@@ -212,7 +212,7 @@
 <p id=189 class="line"><span>&nbsp;189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;sheet[col+row];</p>
 <p id=190 class="line"><span>&nbsp;190</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;val&nbsp;=&nbsp;c.w!==undefined?&nbsp;c.w&nbsp;:&nbsp;c.v;</p>
 <p id=191 class="line"><span>&nbsp;191</span>			if&nbsp;(c)&nbsp;{&nbsp;switch(c.t)&nbsp;{</p>
-<p id=192 class="line"><span>&nbsp;192</span>				case&nbsp;<quote>'s'</quote>:&nbsp;return&nbsp;(<string>val).replace(/,/g,<quote>';'</quote>).replace(/[\n\r]+/g,<quote>'&nbsp;'</quote>).trim();</p>
+<p id=192 class="line"><span>&nbsp;192</span>				case&nbsp;<quote>'s'</quote>:&nbsp;return&nbsp;(&lt;string&gt;val).replace(/,/g,<quote>';'</quote>).replace(/[\n\r]+/g,<quote>'&nbsp;'</quote>).trim();</p>
 <p id=193 class="line"><span>&nbsp;193</span>				case&nbsp;<quote>'n'</quote>:&nbsp;<comment>/*&nbsp;falls&nbsp;through&nbsp;*/</comment>&nbsp;</p>
 <p id=194 class="line"><span>&nbsp;194</span>				default:&nbsp;return&nbsp;c.w.replace(/,/g,<quote>''</quote>);</p>
 <p id=195 class="line"><span>&nbsp;195</span>			}}</p>
@@ -274,7 +274,7 @@
 <p id=251 class="line"><span>&nbsp;251</span>			names:[],</p>
 <p id=252 class="line"><span>&nbsp;252</span>			sheetName:&nbsp;sheetName,</p>
 <p id=253 class="line"><span>&nbsp;253</span>			headerRow:&nbsp;row,</p>
-<p id=254 class="line"><span>&nbsp;254</span>			colIndex:&nbsp;&nbsp;<string[]>[]</p>
+<p id=254 class="line"><span>&nbsp;254</span>			colIndex:&nbsp;&nbsp;&lt;string[]&gt;[]</p>
 <p id=255 class="line"><span>&nbsp;255</span>		};</p>
 <p id=256 class="line"><span>&nbsp;256</span>		for&nbsp;(let&nbsp;col&nbsp;of&nbsp;it)&nbsp;{</p>
 <p id=257 class="line"><span>&nbsp;257</span>			result.names.push(col.name);</p>
