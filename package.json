@@ -1,6 +1,6 @@
 {
     "name": "hsexcel",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "main": "./bin/cjs/index.js",
     "module": "./bin/esm/index.js",
     "files": [
