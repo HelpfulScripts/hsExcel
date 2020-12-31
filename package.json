@@ -9,8 +9,10 @@
     "types": "./bin/esm/index.d.ts",
     "type": "module",
     "scripts": {
+        "dev": "grunt --gruntfile Gruntfile.cjs dev",
+        "build": "grunt --gruntfile Gruntfile.cjs build",
         "grunt": "grunt --gruntfile Gruntfile.cjs",
-        "prepublishOnly": "npm run grunt",
+        "prepublishOnly": "npm run grunt publish",
         "postpublish": "npm version patch"
     },
     "keywords": [
@@ -58,6 +60,6 @@
     },
     "dependencies": {
         "hsutil": "3.x.x",
-        "xlsx": "^0.15.3"
+        "xlsx": "^0.16.x"
     }
 }
