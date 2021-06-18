@@ -60,6 +60,6 @@
     },
     "dependencies": {
         "hsutil": "3.x.x",
-        "xlsx": "^0.16.x"
+        "xlsx": "^0.17.0"
     }
 }
